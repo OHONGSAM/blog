@@ -8,7 +8,9 @@
     <p>글 제목</p>
     <p>{{ form.title }}</p>
     <p>글 내용</p>
-    <p>{{ form.content}}</p>
+    <p>{{ form.content }}</p>
+    <p>카테고리</p>
+    <p>{{ form.category }}</p>
     <a href="{% url 'blog:list' %}" class="btn btn-outline-danger">취소</a>
     <input type="submit" value='작성' class="btn btn-outline-success">
 </form>

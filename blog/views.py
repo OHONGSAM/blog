@@ -38,6 +38,8 @@ class PostWrite(View):
 class PostDetail(View):
     def get(self, request, post_id):
         post = Post.objects.get(pk=post_id)
+        post.views += 1
+        post.save()
         context = {
             "post": post,
             "comment_form": CommentForm,
@@ -78,14 +80,26 @@ class PostSearch(View):
         opt = request.GET.get('q-opt')
         print('\n\n\n\n\n\n\n\n\n opt : ', opt)
         print(query)
+
+        # 빈 쿼리 또는 select 에러 시 전체 list
         if not query or opt not in '1234':
             return redirect('blog:list')
-        if opt == 1:
+
+        # select에 따른 qeury 결과
+        if opt == '1':  # 제목/내용
             result = list(Post.objects.filter(
                 Q(content__icontains=query) | Q(title__icontains=query)))
-        if opt == 2:
+        elif opt == '2':  # 댓글
             comments = list(Comment.objects.filter(content__icontains=query))
             result = [comment.post for comment in comments]
+        elif opt == '3':  # 카테고리
+            pass
+        elif opt == '4':  # 태그
+            pass
+        else:
+            result = None
+
+        # rusult에 따른 context
         if result:
             context = {
                 'posts': result

@@ -12,6 +12,8 @@
             <td>title</td>
             <td>writer</td>
             <td>created_at</td>
+            <td>views</td>
+            <td>likes</td>
         </tr>
     </thead>
     <tody>
@@ -20,6 +22,9 @@
             <td><a href="{% url 'blog:detail' post_id=post.pk %}" class="btn btn btn-outline-secondary">{{ post.title }}</a></td>
             <td>{{ post.writer }}</td>
             <td>{{ post.created_at }}</td>
+            <td>{{ post.views }}</td>
+            <td>{{ post.likes }}</td>
+            
         </tr>
         {% endfor %}
     </tody>

@@ -9,6 +9,9 @@ class Post(models.Model):
     writer = models.CharField(max_length=50)  # 이후 auth user로 변환 필요
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    views = models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
+    category = models.CharField(max_length=50)
 
     # 좋아요
     # 조회수
