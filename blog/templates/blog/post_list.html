@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Blog List</h1>
+<a href="{% url 'blog:write' %}" class="btn btn-outline-success">새 글</a>
+
+
+{% if posts %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>title</td>
+            <td>writer</td>
+            <td>created_at</td>
+        </tr>
+    </thead>
+    <tody>
+        {% for post in posts %}
+        <tr>
+            <td><a href="{% url 'blog:detail' post_id=post.pk %}" class="btn btn btn-outline-secondary">{{ post.title }}</a></td>
+            <td>{{ post.writer }}</td>
+            <td>{{ post.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </tody>
+</table>
+{% else %}
+    {% if query %}
+    <p>일치하는 검색 결과가 없습니다.</p>
+    {% else %}
+    <p>작성된 게시글이 없습니다.</p>
+    {% endif %}
+{% endif %}
+
+
+<form action="{% url 'blog:search' %}" method='get' class='d-flex mt-5'>
+    <select class="form-select" name='q-opt'>
+        <option selected value="1">제목/내용</option>
+        <option value="2">댓글</option>
+        <option value="3">카테고리</option>
+        <option value="4">태그</option>
+    </select>
+    <input type="text" name='q' class='form-control'>
+    <input type="submit" value="검색" class="input-group-text">
+</form>
+
+
+{% endblock content %}

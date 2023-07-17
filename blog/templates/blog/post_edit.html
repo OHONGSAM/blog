@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Blog Post Edit</h1>
+<form action="{% url "blog:edit" post_id=post.pk %}" method="post">
+    {% csrf_token %}
+    <p>글 제목</p>
+    <p>{{ form.title }}</p>
+    <p>글 내용</p>
+    <p>{{ form.content }}</p>
+    <a href="{% url 'blog:detail' post_id=post.pk %}" class="btn btn-outline-danger">취소</a>
+    <input type="submit" value='수정' class="btn btn-outline-success">
+</form>
+
+{% endblock content %}

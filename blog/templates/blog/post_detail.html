@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>제목 : {{ post.title }}</h2>
+<a href="{% url 'blog:edit' post_id=post.pk %}" class='btn btn-outline-success'>수정</a>
+<a href="{% url 'blog:list' %}" class='btn btn-outline-success'>목록</a>
+<form action="{% url 'blog:delete' post_id=post.pk %}" method='post' class="d-inline">
+    {% csrf_token %}
+    <input type="submit" class='btn btn-outline-danger' value='삭제'>
+</form>
+<p>글쓴이 : {{ post.writer }}</p>
+<p>작성일 : {{ post.created_at }}</p>
+<p>수정일 : {{ post.updated_at }}</p>
+<p>내용 : {{ post.content }}</p>
+
+<hr>
+<!-- 댓글 목록 -->
+{% if post.comment_set.all %}
+<ul class='list-group'>
+    {% for comment in post.comment_set.all %}
+    <!-- 내용, 작성시간, 삭제버튼 -->
+        <li class='list-group-item d-flex justify-content-between align-items-center'>
+            <div>
+                <div class="badge bg-secondary">{{ comment.created_at }}</div>
+                <div class="text-wrap text-break">{{ comment.content }}</div>
+            </div>
+
+            {% comment %} {% if request.user == comment.writer %} {% endcomment %}
+            
+            <form action="{% url 'blog:cm-delete' comment_id=comment.pk %}" method='post'>
+                {% csrf_token %}
+                <input type="submit" value='X' class="btn btn-outline-danger">
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>작성된 댓글이 없습니다.</p>
+{% endif %}
+
+<!-- 댓글 작성 -->
+<form action="{% url 'blog:cm-write' post_id=post.pk %}" method="post">
+    {% csrf_token %}
+    {{ comment_form.content }}
+    <input type="submit" value='+' class="btn btn-outline-success">
+</form>
+
+{% endblock content %}
