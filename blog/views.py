@@ -114,6 +114,15 @@ class PostSearch(View):
         return render(request, "blog/post_list.html", context)
 
 
+class PostLike(View):
+    def post(self, request, post_id):
+        post = Post.objects.get(pk=post_id)
+        post.views -= 1
+        post.likes += 1
+        post.save()
+        return redirect('blog:detail', post_id)
+
+
 # Comment
 class CommentWrite(View):
     def post(self, request, post_id):

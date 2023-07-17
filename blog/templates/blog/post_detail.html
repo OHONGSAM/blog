@@ -16,25 +16,29 @@
 <p>추천수 : {{ post.likes }}</p>
 <p>카테고리 : {{ post.category }}</p>
 
+<form action="{% url 'blog:like' post_id=post.pk %}" method="post">
+    {% csrf_token %}
+    <input type="submit" class='btn btn-outline-danger' value='♡'>
+</form>
 <hr>
 <!-- 댓글 목록 -->
 {% if post.comment_set.all %}
 <ul class='list-group'>
     {% for comment in post.comment_set.all %}
     <!-- 내용, 작성시간, 삭제버튼 -->
-        <li class='list-group-item d-flex justify-content-between align-items-center'>
-            <div>
-                <div class="badge bg-secondary">{{ comment.created_at }}</div>
-                <div class="text-wrap text-break">{{ comment.content }}</div>
-            </div>
-
-            {% comment %} {% if request.user == comment.writer %} {% endcomment %}
-            
-            <form action="{% url 'blog:cm-delete' comment_id=comment.pk %}" method='post'>
-                {% csrf_token %}
-                <input type="submit" value='X' class="btn btn-outline-danger">
-            </form>
-        </li>
+    <li class='list-group-item d-flex justify-content-between align-items-center'>
+        <div>
+            <div class="badge bg-secondary">{{ comment.created_at }}</div>
+            <div class="text-wrap text-break">{{ comment.content }}</div>
+        </div>
+        
+        {% comment %} {% if request.user == comment.writer %} {% endcomment %}
+        
+        <form action="{% url 'blog:cm-delete' comment_id=comment.pk %}" method='post'>
+            {% csrf_token %}
+            <input type="submit" value='X' class="btn btn-outline-danger">
+        </form>
+    </li>
     {% endfor %}
 </ul>
 {% else %}
