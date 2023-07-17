@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Blog List</h1>
 <a href="{% url 'blog:write' %}" class="btn btn-outline-success">새 글</a>
 
 
@@ -18,6 +17,7 @@
     </thead>
     <tody>
         {% for post in posts %}
+
         <tr>
             <td><a href="{% url 'blog:detail' post_id=post.pk %}" class="btn btn btn-outline-secondary">{{ post.title }}</a></td>
             <td>{{ post.writer }}</td>

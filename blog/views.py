@@ -9,12 +9,12 @@ from .forms import PostForm, CommentForm
 class PostList(View):
     def get(self, request):
         posts = Post.objects.all().order_by('-created_at')
-        if request.GET.get('sort'):
-            sort = request.GET.get('sort')
-            print(request.GET.get('sort'))
-        else:
-            sort = 'created_at'
-        posts = sorted(posts, key=lambda x: getattr(x, sort))
+        # if request.GET.get('sort'):
+        #     sort = request.GET.get('sort')
+        #     print(request.GET.get('sort'))
+        # else:
+        #     sort = 'created_at'
+        # posts = sorted(posts, key=lambda x: getattr(x, sort))
         context = {
             "posts": posts,
         }
