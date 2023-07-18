@@ -57,7 +57,9 @@ class PostDetail(View):
         return render(request, "blog/post_detail.html", context)
 
 
-class PostEdit(View):
+class PostEdit(LoginRequiredMixin, View):
+    login_url = 'user:login'
+
     def get(self, request, post_id):
         post = Post.objects.get(pk=post_id)
         form = PostForm(instance=post)
