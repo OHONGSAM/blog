@@ -24,6 +24,8 @@ class PostList(View):
 
 
 class PostWrite(LoginRequiredMixin, View):
+    login_url = 'user:login'
+
     def get(self, request):
         form = PostForm
         context = {
