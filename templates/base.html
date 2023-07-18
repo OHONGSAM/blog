@@ -11,7 +11,7 @@
   <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
       <div class='container'>
-          <a class="navbar-brand mw-5" href="{% url 'main' %}">My Blog</a>
+          <a class="navbar-brand mw-5" href="{% url 'main' %}">ㅂㅡㄹ ㄹㅗ ㄱㅡ</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -22,7 +22,7 @@
                 <a class="nav-link" href="{% url 'blog:list' %}">전체글</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">인기글</a>
+                <a class="nav-link" href="{% url 'blog:hot' %}">인기글</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
