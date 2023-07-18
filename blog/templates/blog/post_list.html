@@ -5,29 +5,42 @@
 
 
 {% if posts %}
-<table class="table table-bordered">
-    <thead>
+<table class="table table-hover text-center">
+    <thead class="table-dark">
         <tr>
-            <td>title</td>
-            <td>writer</td>
-            <td><a href="?sort=created_at">created_at</a></td>
-            <td><a href="?sort=views">views</a></td>
-            <td><a href="?sort=likes">likes</a></td>
+            <th>카테고리</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th><a href="?sort=created_at" class="text-reset">작성일</a></th>
+            <th><a href="?sort=views" class="text-reset">조회</a></th>
+            <th><a href="?sort=likes" class="text-reset">추천</a></th>
         </tr>
     </thead>
-    <tody>
-        {% for post in posts %}
-
-        <tr>
-            <td><a href="{% url 'blog:detail' post_id=post.pk %}" class="btn btn btn-outline-secondary">{{ post.title }}</a></td>
-            <td>{{ post.writer }}</td>
-            <td>{{ post.created_at }}</td>
-            <td>{{ post.views }}</td>
-            <td>{{ post.likes }}</td>
-            
-        </tr>
-        {% endfor %}
-    </tody>
+    <tbody>
+        {% if sort %}
+            {% for post in posts|dictsortreversed:sort %}
+            <tr>
+                <td>category</td>
+                <td><a href="{% url 'blog:detail' post_id=post.pk %}" class="btn btn-outline-secondary">{{ post.title }}</a></td>
+                <td>{{ post.writer }}</td>
+                <td>{{ post.created_at.month }}/{{ post.created_at.day }} {{ post.created_at.hour }}:{{ post.created_at.minute }} -- {{ post.created_at.time }}</td>
+                <td>{{ post.views }}</td>
+                <td>{{ post.likes }}</td>
+            </tr>
+            {% endfor %}
+        {% comment %} {% else %}
+            {% for post in posts %}
+            <tr>
+                <td>category</td>
+                <td><a href="{% url 'blog:detail' post_id=post.pk %}" class="btn btn-outline-secondary">{{ post.title }}</a></td>
+                <td>{{ post.writer }}</td>
+                <td>{{ post.created_at.month }}/{{ post.created_at.day }} {{ post.created_at.hour }}:{{ post.created_at.minute }} -- {{ post.created_at.time }}</td>
+                <td>{{ post.views }}</td>
+                <td>{{ post.likes }}</td>
+            </tr>
+            {% endfor %} {% endcomment %}
+        {% endif %}
+    </tbody>
 </table>
 {% else %}
     {% if query %}

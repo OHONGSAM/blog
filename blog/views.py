@@ -9,14 +9,15 @@ from .forms import PostForm, CommentForm
 class PostList(View):
     def get(self, request):
         posts = Post.objects.all().order_by('-created_at')
-        # if request.GET.get('sort'):
-        #     sort = request.GET.get('sort')
-        #     print(request.GET.get('sort'))
-        # else:
-        #     sort = 'created_at'
+        if request.GET.get('sort'):
+            sort = request.GET.get('sort')
+            print(request.GET.get('sort'))
+        else:
+            sort = 'created_at'
         # posts = sorted(posts, key=lambda x: getattr(x, sort))
         context = {
             "posts": posts,
+            "sort": sort,
         }
         return render(request, "blog/post_list.html", context)
 
@@ -94,9 +95,10 @@ class PostSearch(View):
         # select에 따른 qeury 결과
         if opt == '1':  # 제목/내용
             result = list(Post.objects.filter(
-                Q(content__icontains=query) | Q(title__icontains=query)))
+                Q(content__icontains=query) | Q(title__icontains=query)).order_by('-created_at'))
         elif opt == '2':  # 댓글
-            comments = list(Comment.objects.filter(content__icontains=query))
+            comments = list(Comment.objects.filter(
+                content__icontains=query).order_by('-created_at'))
             result = [comment.post for comment in comments]
         elif opt == '3':  # 카테고리
             pass
