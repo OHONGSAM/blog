@@ -6,7 +6,7 @@
 
 {% if posts %}
 <table class="table table-hover text-center">
-    <thead class="table-dark">
+    <thead class="thead-dark">
         <tr>
             <th>카테고리</th>
             <th>제목</th>
@@ -50,7 +50,7 @@
     {% endif %}
 {% endif %}
 
-
+<!-- Search Form -->
 <form action="{% url 'blog:search' %}" method='get' class='d-flex mt-5'>
     <select class="form-select" name='q-opt'>
         <option selected value="1">제목/내용</option>

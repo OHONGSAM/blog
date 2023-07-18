@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import View
 from django.db.models import Q
@@ -22,7 +23,7 @@ class PostList(View):
         return render(request, "blog/post_list.html", context)
 
 
-class PostWrite(View):
+class PostWrite(LoginRequiredMixin, View):
     def get(self, request):
         form = PostForm
         context = {
@@ -34,8 +35,7 @@ class PostWrite(View):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            if request.user:
-                post.writer = request.user
+            post.writer = request.user
             post.save()
             return redirect("blog:list")
 
