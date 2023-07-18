@@ -1,19 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% if request.user.is_authenticated %}
-<a href="{% url 'blog:write' %}" class="btn btn-outline-success">새 글</a>
-{% endif %}
-
 
 {% if posts %}
 <table class="table table-hover text-center">
-    <thead class="thead-secondary">
+    <thead class="thead">
         <tr>
             <th>카테고리</th>
             <th>제목</th>
             <th>글쓴이</th>
-            <th><a href="?sort=created_at" class="">작성일</a></th>
+            <th><a href="?sort=created_at" class="text">작성일</a></th>
             <th><a href="?sort=views" class="text-reset">조회</a></th>
             <th><a href="?sort=likes" class="text-reset">추천</a></th>
         </tr>
@@ -74,6 +70,9 @@
 </nav>
 {% endif %}
 
+{% if request.user.is_authenticated %}
+<a href="{% url 'blog:write' %}" class="btn btn-outline-success">새 글</a>
+{% endif %}
 
 <!-- Search Form -->
 <form action="{% url 'blog:search' %}" method='get' class='d-flex mt-5'>

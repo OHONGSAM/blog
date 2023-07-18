@@ -18,13 +18,35 @@
 <p>추천수 : {{ post.likes }}</p>
 <p>카테고리 : {{ post.category }}</p>
 
+<table class="table table-sm table-bordered text-center">
+    <thead>
+        <tr>
+            <th colspan="7">제~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~목 : {{post.title}}</th>
+            <th colspan="3">{{ post.created_at }}</th>
+        </tr>
+    </thead>
+        <tr>
+            <td colspan="7" class="text-left">{{post.writer}}</td>
+            <td colspan="1">조회 {{post.views}}</td>
+            <td colspan="1">추천 {{post.likes}}</td>
+            <td colspan="1">댓글 개수</td>
+        </tr>
+        <tr>
+            <td colspan='10'>내용 {{post.content}}</td>
+        </tr>
+    <tbody>
+
+    </tbody>
+</table>
+
 {% if request.user.is_authenticated %}
-<form action="{% url 'blog:like' post_id=post.pk %}" method="post">
+<form action="{% url 'blog:like' post_id=post.pk %}" method="post" >
     {% csrf_token %}
     <input type="submit" class='btn btn-outline-danger' value='♡'>
 </form>
 {% endif %}
 <hr>
+
 <!-- 댓글 목록 -->
 {% if post.comment_set.all %}
 <ul class='list-group'>
@@ -32,7 +54,7 @@
     <!-- 내용, 작성시간, 삭제버튼 -->
     <li class='list-group-item d-flex justify-content-between align-items-center'>
         <div>
-            <div class="badge bg-secondary">{{ comment.created_at }}</div>
+            <div class="badge badge-secondary">{{ comment.created_at }}</div>
             <div class="text-wrap text-break">{{ comment.content }}</div>
         </div>
         

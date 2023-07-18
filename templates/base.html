@@ -9,36 +9,43 @@
     <title>Blog</title>
   </head>
   <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark ps-3">
-      <a class="navbar-brand mw-5" href="{% url 'blog:list' %}">My Blog</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          {% if request.user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'user:logout' %}">로그아웃</a>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'user:login' %}">로그인</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'user:register' %}">회원가입</a>
-          </li>
-          {% endif %}
-        </ul>
-        {% if request.user.is_authenticated %}
-        <span class="navbar-text">환영합니다 {{request.user}} 님</span>
-        {% endif %}
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+      <div class='container'>
+          <a class="navbar-brand mw-5" href="{% url 'main' %}">My Blog</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:list' %}">전체글</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">인기글</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">카테고리</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                {% if request.user.is_authenticated %}
+                <li class='nav-item'><span class="navbar-text">환영합니다 {{request.user}} 님 |</span></li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user:logout' %}">로그아웃</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user:login' %}">로그인</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user:register' %}">회원가입</a>
+                </li>
+                {% endif %}
+            </ul>
+          </div>
       </div>
     </nav>
     <div class="container mt-3">
