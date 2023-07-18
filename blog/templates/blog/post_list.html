@@ -22,7 +22,7 @@
         {% if sort %}
             {% for post in posts|dictsortreversed:sort %}
             <tr>
-                <td>category</td>
+                <td>{{ post.category }}</td>
                 <td><a href="{% url 'blog:detail' post_id=post.pk %}" class="btn btn-outline-secondary">{{ post.title }}</a></td>
                 <td>{{ post.writer }}</td>
                 <td>{{ post.created_at.month }}/{{ post.created_at.day }} {{ post.created_at.hour }}:{{ post.created_at.minute }} -- {{ post.created_at.time }}</td>
