@@ -10,23 +10,25 @@ from .models import Post, Comment
 # Create your views here.
 class PostList(View):
     def get(self, request):
-        posts = Post.objects.all().order_by('-created_at')
-
         # sort 방법 추출
         if request.GET.get('sort'):
             sort = request.GET.get('sort')
             print(request.GET.get('sort'))
         else:
             sort = 'created_at'
+        # post 데이터 by ORM
+        posts = Post.objects.all()
+        posts_sorted = sorted(
+            posts, key=lambda x: getattr(x, sort), reverse=True)
 
         # 페이지당 보여줄 포스트 수
-        posts_per_page = 7
+        posts_per_page = 5
 
         # 현재 페이지 번호 가져오기
         page_number = request.GET.get('page', 1)
 
         # Paginator 객체 생성
-        paginator = Paginator(posts, posts_per_page)
+        paginator = Paginator(posts_sorted, posts_per_page)
 
         try:
             # 현재 페이지에 해당하는 포스트 가져오기
