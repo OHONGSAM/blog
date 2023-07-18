@@ -13,7 +13,7 @@
             <th>카테고리</th>
             <th>제목</th>
             <th>글쓴이</th>
-            <th><a href="?sort=created_at" class="text-reset">작성일</a></th>
+            <th><a href="?sort=created_at" class="">작성일</a></th>
             <th><a href="?sort=views" class="text-reset">조회</a></th>
             <th><a href="?sort=likes" class="text-reset">추천</a></th>
         </tr>
@@ -25,22 +25,11 @@
                 <td>{{ post.category }}</td>
                 <td><a href="{% url 'blog:detail' post_id=post.pk %}" class="btn btn-outline-secondary">{{ post.title }}</a></td>
                 <td>{{ post.writer }}</td>
-                <td>{{ post.created_at.month }}/{{ post.created_at.day }} {{ post.created_at.hour }}:{{ post.created_at.minute }} -- {{ post.created_at.time }}</td>
+                <td>time : {{ post.created_at.time }} DateTimeField : {{ post.created_at }} </td>
                 <td>{{ post.views }}</td>
                 <td>{{ post.likes }}</td>
             </tr>
             {% endfor %}
-        {% comment %} {% else %}
-            {% for post in posts %}
-            <tr>
-                <td>category</td>
-                <td><a href="{% url 'blog:detail' post_id=post.pk %}" class="btn btn-outline-secondary">{{ post.title }}</a></td>
-                <td>{{ post.writer }}</td>
-                <td>{{ post.created_at.month }}/{{ post.created_at.day }} {{ post.created_at.hour }}:{{ post.created_at.minute }} -- {{ post.created_at.time }}</td>
-                <td>{{ post.views }}</td>
-                <td>{{ post.likes }}</td>
-            </tr>
-            {% endfor %} {% endcomment %}
         {% endif %}
     </tbody>
 </table>
@@ -52,9 +41,43 @@
     {% endif %}
 {% endif %}
 
+<!-- Paging Nav -->
+{% if posts.has_other_pages %}
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    {% if posts.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ posts.previous_page_number }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    {% endif %}
+    {% for i in posts.paginator.page_range %}
+      {% if posts.number == i %}
+        <li class="page-item active"><a class='page-link' href='#'>{{ i }}</a></li>
+      {% else %}
+        <li class='page-item'>
+            <a class='page-link' href="?page={{ i }}">{{ i }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+    {% if posts.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ posts.next_page_number }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
+
+
 <!-- Search Form -->
 <form action="{% url 'blog:search' %}" method='get' class='d-flex mt-5'>
-    <select class="form-select" name='q-opt'>
+    <select class="custom-select col col-lg-2" name='q-opt'>
         <option selected value="1">제목/내용</option>
         <option value="2">댓글</option>
         <option value="3">카테고리</option>

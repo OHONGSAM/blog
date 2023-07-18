@@ -1,23 +1,42 @@
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
-from django.views import View
+from django.core.paginator import Paginator, InvalidPage
 from django.db.models import Q
-from .models import Post, Comment
+from django.views import View
 from .forms import PostForm, CommentForm
+from .models import Post, Comment
 
 
 # Create your views here.
 class PostList(View):
     def get(self, request):
         posts = Post.objects.all().order_by('-created_at')
+
+        # sort 방법 추출
         if request.GET.get('sort'):
             sort = request.GET.get('sort')
             print(request.GET.get('sort'))
         else:
             sort = 'created_at'
-        # posts = sorted(posts, key=lambda x: getattr(x, sort))
+
+        # 페이지당 보여줄 포스트 수
+        posts_per_page = 7
+
+        # 현재 페이지 번호 가져오기
+        page_number = request.GET.get('page', 1)
+
+        # Paginator 객체 생성
+        paginator = Paginator(posts, posts_per_page)
+
+        try:
+            # 현재 페이지에 해당하는 포스트 가져오기
+            page = paginator.page(page_number)
+        except InvalidPage:
+            # 유효하지 않은 페이지 번호일 경우 첫 번째 페이지로 이동
+            page = paginator.page(1)
+
         context = {
-            "posts": posts,
+            "posts": page,
             "sort": sort,
         }
         return render(request, "blog/post_list.html", context)
@@ -46,7 +65,7 @@ class PostWrite(LoginRequiredMixin, View):
 
 class PostDetail(View):
     def get(self, request, post_id):
-        post = Post.objects.get(pk=post_id)
+        post = get_object_or_404(Post, pk=post_id)
         post.views += 1
         post.save()
         context = {
@@ -61,7 +80,7 @@ class PostEdit(LoginRequiredMixin, View):
     login_url = 'user:login'
 
     def get(self, request, post_id):
-        post = Post.objects.get(pk=post_id)
+        post = get_object_or_404(Post, pk=post_id)
         form = PostForm(instance=post)
         context = {
             "form": form,
@@ -129,6 +148,8 @@ class PostSearch(View):
 class PostLike(View):
     def post(self, request, post_id):
         post = Post.objects.get(pk=post_id)
+        if not post:
+            return render(request, 'blog/post_error.html', {'error': '존재하지 않는 페이지입니다'})
         post.views -= 1
         post.likes += 1
         post.save()
