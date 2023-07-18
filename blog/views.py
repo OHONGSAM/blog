@@ -136,7 +136,9 @@ class PostLike(View):
 
 
 # Comment
-class CommentWrite(View):
+class CommentWrite(LoginRequiredMixin, View):
+    login_url = 'user:login'
+
     def post(self, request, post_id):
         post = Post.objects.get(pk=post_id)
         form = CommentForm(request.POST)

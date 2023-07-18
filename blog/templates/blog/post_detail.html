@@ -37,11 +37,12 @@
         </div>
         
         {% comment %} {% if request.user == comment.writer %} {% endcomment %}
-        
+        {% if comment.writer == request.user %}
         <form action="{% url 'blog:cm-delete' comment_id=comment.pk %}" method='post'>
             {% csrf_token %}
             <input type="submit" value='X' class="btn btn-outline-danger">
         </form>
+        {% endif %}
     </li>
     {% endfor %}
 </ul>
@@ -50,10 +51,12 @@
 {% endif %}
 
 <!-- 댓글 작성 -->
+{% if request.user.is_authenticated %}
 <form action="{% url 'blog:cm-write' post_id=post.pk %}" method="post">
     {% csrf_token %}
     {{ comment_form.content }}
     <input type="submit" value='+' class="btn btn-outline-success">
 </form>
+{% endif %}
 
 {% endblock content %}
