@@ -1,9 +1,12 @@
 # blog/forms.py
 from django import forms
+from django_tuieditor.fields import MarkdownFormField
+from django_tuieditor.widgets import MarkdownEditorWidget
 from .models import Post, Comment
 
 
 class PostForm(forms.ModelForm):
+
     class Meta:
         model = Post
         fields = ["title", "content", "category"]
@@ -11,7 +14,7 @@ class PostForm(forms.ModelForm):
             "title": forms.TextInput(
                 attrs={"rows": "3", "cols": "35", "class": "form-control"}
             ),
-            "content": forms.Textarea(
+            "content": MarkdownEditorWidget(
                 attrs={"rows": "3", "cols": "35", "class": "form-control"}
             ),
             "category": forms.TextInput(

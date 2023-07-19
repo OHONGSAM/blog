@@ -86,6 +86,7 @@ class PostWrite(LoginRequiredMixin, View):
         context = {
             "form": form,
         }
+        # return render(request, "django_tuieditor/editor.html")
         return render(request, "blog/post_write.html", context)
 
     def post(self, request):
@@ -127,6 +128,7 @@ class PostEdit(LoginRequiredMixin, View):
     def post(self, request, post_id):
         post = Post.objects.get(pk=post_id)
         form = PostForm(request.POST, instance=post)
+        print(form)
         if form.is_valid():
             form.save()
             return redirect("blog:detail", post_id=post_id)

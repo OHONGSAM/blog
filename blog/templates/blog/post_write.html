@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'toastui-editor/toastui-editor.css' %}">
+<script src="{% static 'toastui-editor/toastui-editor.min.js' %}"></script>
 
 <h1>Blog post create</h1>
 <form action="{% url 'blog:write' %}" method="post">
@@ -14,5 +19,14 @@
     <a href="{% url 'blog:list' %}" class="btn btn-outline-danger">취소</a>
     <input type="submit" value='작성' class="btn btn-outline-success">
 </form>
+
+<script>
+  const editor = new toastui.Editor({
+    el: document.querySelector('#id_content'),
+    initialEditType: 'markdown',
+    previewStyle: 'vertical',
+    height: '300px'
+  });
+</script>
 
 {% endblock content %}
