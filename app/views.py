@@ -7,8 +7,11 @@ from blog.models import Post
 class IndexMain(View):
     def get(self, request):
         hotposts = Post.objects.order_by('-likes')[:5]
-        print(hotposts)
+        for post in hotposts:
+            post.content = post.content[:30] + '…'
+        toppost = hotposts[0]
         context = {
-            'posts': hotposts
+            'top': toppost,
+            'posts': hotposts[1:]
         }
         return render(request, 'index.html', context)

@@ -6,8 +6,44 @@ from django.views import View
 from .forms import PostForm, CommentForm
 from .models import Post, Comment
 
+import os
+from django.conf import settings
+from django.http import JsonResponse
 
-# Create your views here.
+
+# def upload_image(request):
+#     if request.method == 'POST' and request.FILES.get('image'):
+#         image = request.FILES['image']
+#         print(image)
+#         # Save the image or process it as needed
+#         # Here, we'll just return the URL where the image is stored
+#         image_url = '/static/' + image.name
+#         return JsonResponse({'image_url': image_url})
+#     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+
+def upload_image(request):
+    if request.method == 'POST' and request.FILES.get('image'):
+        image = request.FILES['image']
+        print(settings.MEDIA_URL)
+        print(settings.MEDIA_ROOT)
+        # Generate a unique filename for the uploaded image
+        filename = image.name
+        upload_path = os.path.join(settings.MEDIA_ROOT, 'uploads', filename)
+
+        # Save the image to the static folder
+        with open(upload_path, 'wb') as file:
+            for chunk in image.chunks():
+                file.write(chunk)
+
+        # Create the URL for the uploaded image
+        image_url = settings.MEDIA_ROOT + '/uploads/' + filename
+
+        return JsonResponse({'image_url': image_url})
+
+    return JsonResponse({'error': 'Invalid request'}, status=400)
+
+
 class PostList(View):
     def get(self, request):
         # sort 방법 추출
@@ -147,8 +183,6 @@ class PostSearch(View):
     def get(self, request):
         query = request.GET.get('q')
         opt = request.GET.get('q-opt')
-        print('\n\n\n\n\n\n\n\n\n opt : ', opt)
-        print(query)
 
         # 빈 쿼리 또는 select 에러 시 전체 list
         if not query or opt not in '1234':
@@ -179,8 +213,6 @@ class PostSearch(View):
                 'posts': None,
                 'query': True,
             }
-        print('쿼리 : ', query)
-        print('결과 : ', result)
         return render(request, "blog/post_list.html", context)
 
 

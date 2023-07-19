@@ -58,12 +58,12 @@
     </nav>
     
     <header class="py-5 bg-light border-bottom mb-4">
-    <div class="container">
-        <div class="text-center my-5">
-            <h1 class="fw-bolder">Welcome to Blog Home!</h1>
-            <p class="lead mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet earum debitis veniam? Ab repellat, quisquam tempore quaerat eius culpa corporis architecto aperiam pariatur repellendus ad commodi quas perspiciatis voluptas dolore!</p>
+        <div class="container">
+            <div class="text-center my-5">
+                <h1 class="fw-bolder">Welcome to Blog Home!</h1>
+                <p class="lead mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet earum debitis veniam? Ab repellat, quisquam tempore quaerat eius culpa corporis architecto aperiam pariatur repellendus ad commodi quas perspiciatis voluptas dolore!</p>
+            </div>
         </div>
-    </div>
     </header>
 
     <div class="container">
@@ -72,62 +72,37 @@
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
                     <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."></a>
+                        <a href="{% url 'blog:detail' post_id=top.pk %}"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."></a>
                         <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title">Featured Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
+                            <div class="small text-muted">{{ top.created_at.month }}/{{top.created_at.day}}, {{top.created_at.year}}</div>
+                            <h2 class="card-title">{{top.title}}</h2>
+                            <p class="card-text">{{top.content}}</p>
+                            <a class="btn btn-primary" href="{% url 'blog:detail' post_id=top.pk %}">Read more →</a>
                         </div>
                     </div>
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
+                        {% if posts %}
+                        {% for post in posts %}
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."></a>
                                 <div class="card-body">
-                                    <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
+                                    <div class="small text-muted">{{ post.created_at.year }}.{{post.created_at.month}}.{{post.created_at.day}}</div>
+                                    <h2 class="card-title h4">{{ post.title }}</h2>
+                                    <p class="card-text">{{post.content}}</p>
+                                    <a class="btn btn-primary" href="{% url 'blog:detail' post_id=post.pk %}">Read more →</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <p>등록된 게시글이 없습니다.</p>
+                        {% endif %}                        
                     </div>
                     <!-- Pagination-->
+                    <!--
                     <nav aria-label="Pagination">
                         <hr class="my-0">
                         <ul class="pagination justify-content-center my-4">
@@ -140,6 +115,7 @@
                             <li class="page-item"><a class="page-link" href="#!">Older</a></li>
                         </ul>
                     </nav>
+                    -->
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
