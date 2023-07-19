@@ -28,7 +28,28 @@
     initialEditType: 'markdown',
     previewStyle: 'vertical',
     height: '300px',
-    initialValue: `{{ form.content.value }}`
+    initialValue: `{{ form.content.value }}`,
+    hooks: {
+      addImageBlobHook: function(blob, callback) {
+          var formData = new FormData();
+          formData.append('image', blob);
+          var csrftoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+          var headers = {'X-CSRFToken': csrftoken};
+          fetch('upload-image/', {
+              method: 'POST',
+              body: formData,
+              headers: headers,
+          })
+              .then(response => response.json())
+              .then(result => {
+                  var imageUrl = result.image_url;
+                  callback(imageUrl, 'alt text');
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+              });
+      }
+    }
   });
 
   const submitBtn = document.getElementById('btn-submit');

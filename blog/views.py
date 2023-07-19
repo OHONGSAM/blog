@@ -22,14 +22,16 @@ from django.http import JsonResponse
 #     return JsonResponse({'error': 'Invalid request'}, status=400)
 
 
-def upload_image(request):
+def upload_image(request, post_id=None):
     if request.method == 'POST' and request.FILES.get('image'):
         image = request.FILES['image']
-        print(settings.MEDIA_URL)
-        print(settings.MEDIA_ROOT)
+        print('URL : ', settings.MEDIA_URL)
+        print('ROOT : ', settings.MEDIA_ROOT)
         # Generate a unique filename for the uploaded image
         filename = image.name
         upload_path = os.path.join(settings.MEDIA_ROOT, 'uploads', filename)
+        local_path = 'http://127.0.0.1:8000/media'
+        # upload_path = os.path.join(local_path, 'uploads', filename)
 
         # Save the image to the static folder
         with open(upload_path, 'wb') as file:
@@ -37,7 +39,7 @@ def upload_image(request):
                 file.write(chunk)
 
         # Create the URL for the uploaded image
-        image_url = settings.MEDIA_ROOT + '/uploads/' + filename
+        image_url = local_path + '/uploads/' + filename
 
         return JsonResponse({'image_url': image_url})
 

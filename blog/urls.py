@@ -4,11 +4,13 @@ from . import views
 app_name = "blog"
 
 urlpatterns = [
-    path('write/upload-image/', views.upload_image, name='upload_image'),
     path("", views.PostList.as_view(), name="list"),
     path("write/", views.PostWrite.as_view(), name="write"),
+    path('write/upload-image/', views.upload_image, name='upload_image'),
     path("detail/<int:post_id>/", views.PostDetail.as_view(), name="detail"),
     path("detail/<int:post_id>/edit/", views.PostEdit.as_view(), name="edit"),
+    path('detail/<int:post_id>/edit/upload-image/',
+         views.upload_image, name='upload_image'),
     path("detail/<int:post_id>/delete/",
          views.PostDelete.as_view(), name="delete"),
     path("detail/<int:post_id>/comment/write",
