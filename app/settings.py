@@ -26,7 +26,9 @@ SECRET_KEY = "django-insecure-#uzf!slly@5u9q9j9dz0vubd%et4)n(zk1!f^j+)tjd##=c@=@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '13.209.37.52'  # AWS LightSail
+]
 
 
 # Application definition
