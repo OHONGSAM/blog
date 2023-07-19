@@ -18,24 +18,26 @@
 <p>추천수 : {{ post.likes }}</p>
 <p>카테고리 : {{ post.category }}</p>
 
-<table class="table table-sm table-bordered text-center">
-    <thead>
+
+<table class="table table-sm table-bordered">
+    <thead class='text-center'>
         <tr>
-            <th colspan="7">제~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~목 : {{post.title}}</th>
+            <th colspan="7">{{post.title}}</th>
             <th colspan="3">{{ post.created_at }}</th>
         </tr>
     </thead>
-        <tr>
-            <td colspan="7" class="text-left">{{post.writer}}</td>
+    <tbody>
+        <tr class='text-center'>
+            <td colspan="7">{{post.writer}}</td>
             <td colspan="1">조회 {{post.views}}</td>
             <td colspan="1">추천 {{post.likes}}</td>
             <td colspan="1">댓글 개수</td>
         </tr>
         <tr>
-            <td colspan='10'>내용 {{post.content}}</td>
+            <td colspan='10'>
+                <div id="editor"></div>
+            </td>
         </tr>
-    <tbody>
-
     </tbody>
 </table>
 
@@ -81,4 +83,13 @@
 </form>
 {% endif %}
 
+
+<script>
+    const viewer = new toastui.Editor.factory({
+        el: document.querySelector('#editor'),
+        viewer: true,
+        initialValue : `{{ post.content }}`
+    });
+    {% comment %} viewer.setMarkdown( {{ post.content }} ); {% endcomment %}
+</script>
 {% endblock content %}

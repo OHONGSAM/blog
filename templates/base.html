@@ -59,6 +59,10 @@
     </nav>
     <div class="container mt-3">
         {% comment %} <a href="{% url 'blog:list' %}" class="btn btn-dark">Blog</a> {% endcomment %} 
+
+        {% load static %}
+        <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"/>
+        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
         {% block content %}
         {% endblock %}
     </div>
