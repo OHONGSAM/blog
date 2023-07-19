@@ -4,6 +4,13 @@ from django_tuieditor.models import MarkdownField
 
 
 class Post(models.Model):
+    CATEGORY_CHOICES = [
+        ('HTML/CSS', 'HTML / CSS'),
+        ('Python', 'Python'),
+        ('Django', 'Django'),
+        ('고양이', '고양이'),
+    ]
+
     title = models.CharField(max_length=200)
     content = MarkdownField()
     # content = models.TextField()
@@ -12,12 +19,16 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
-    category = models.CharField(max_length=50)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    # category = models.CharField(max_length=50)
 
     # 좋아요
     # 조회수
     # 카테고리
     # 공유,,,?
+
+    def __str__(self):
+        return self.title
 
 
 class Comment(models.Model):
