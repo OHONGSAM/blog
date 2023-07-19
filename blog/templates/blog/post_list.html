@@ -6,12 +6,12 @@
 <table class="table table-hover text-center mt-5">
     <thead class="thead">
         <tr>
-            <th>카테고리</th>
-            <th>제목</th>
-            <th>글쓴이</th>
-            <th><a href="?sort=created_at" class="text-muted">작성일</a></th>
-            <th><a href="?sort=views" class="text-muted">조회</a></th>
-            <th><a href="?sort=likes" class="text-muted">추천</a></th>
+            <th class='w'>카테고리</th>
+            <th class='w-75'>제목</th>
+            <th class="w-">글쓴이</th>
+            <th class="w-25"><a href="?sort=created_at" class="text-muted">작성일</a></th>
+            <th class="w-25"><a href="?sort=views" class="text-muted">✓</a></th>
+            <th class="w-25"><a href="?sort=likes" class="text-muted">♡</a></th>
         </tr>
     </thead>
     <tbody>
@@ -19,9 +19,9 @@
             {% for post in posts|dictsortreversed:sort %}
             <tr>
                 <td>{{ post.category }}</td>
-                <td><a href="{% url 'blog:detail' post_id=post.pk %}" class="btn btn-outline-secondary">{{ post.title }}</a></td>
+                <td><a href="{% url 'blog:detail' post_id=post.pk %}" class="text-muted">{{ post.title }}</a></td>
                 <td>{{ post.writer }}</td>
-                <td>time : {{ post.created_at.time }} DateTimeField : {{ post.created_at }} </td>
+                <td>{{ post.created_at.year }}.{{post.created_at.month}}.{{post.created_at.day}} {{post.created_at.hour}}:{{post.created_at.minute}}</td>
                 <td>{{ post.views }}</td>
                 <td>{{ post.likes }}</td>
             </tr>
