@@ -2,17 +2,42 @@
 
 {% block content %}
 
+{% load static %}
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"/>
+<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+
+
 <h1>Blog Post Edit</h1>
 <form action="{% url "blog:edit" post_id=post.pk %}" method="post">
     {% csrf_token %}
     <p>글 제목</p>
     <p>{{ form.title }}</p>
     <p>글 내용</p>
-    <p>{{ form.content }}</p>
+    <div id="editor"></div>
+    <p hidden>{{ form.content }}</p>
+    <input type="hidden" name="content" value="value">
     <p>카테고리</p>
     <p>{{form.category}}</p>
     <a href="{% url 'blog:detail' post_id=post.pk %}" class="btn btn-outline-danger">취소</a>
-    <input type="submit" value='수정' class="btn btn-outline-success">
+    <input type="submit" value='수정' id='btn-submit' class="btn btn-outline-success">
 </form>
+
+<script>
+  const editor = new toastui.Editor({
+    el: document.querySelector('#editor'),
+    initialEditType: 'markdown',
+    previewStyle: 'vertical',
+    height: '300px',
+    initialValue: `{{ form.content.value }}`
+  });
+
+  const submitBtn = document.getElementById('btn-submit');
+  submitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    const content = editor.getMarkdown(); // Get the Markdown content from the editor
+    document.querySelector("input[name='content']").value = content;
+    submitBtn.closest('form').submit(); // Submit the form
+  });
+</script>
 
 {% endblock content %}

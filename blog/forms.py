@@ -14,7 +14,7 @@ class PostForm(forms.ModelForm):
             "title": forms.TextInput(
                 attrs={"rows": "3", "cols": "35", "class": "form-control"}
             ),
-            "content": MarkdownEditorWidget(
+            "content": forms.Textarea(
                 attrs={"rows": "3", "cols": "35", "class": "form-control"}
             ),
             "category": forms.Select(

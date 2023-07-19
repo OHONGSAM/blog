@@ -91,12 +91,14 @@ class PostWrite(LoginRequiredMixin, View):
 
     def post(self, request):
         form = PostForm(request.POST)
+        print(form)
+        print(request.POST['content'])
         if form.is_valid():
             post = form.save(commit=False)
             post.writer = request.user
+            post.content = request.POST['content']
             post.save()
-            print(form)
-            print(post)
+            print('\n\n\n\n\n\nthis is post', post.content)
             return redirect("blog:list")
 
         return redirect("blog:list")
@@ -132,6 +134,7 @@ class PostEdit(LoginRequiredMixin, View):
         form = PostForm(request.POST, instance=post)
         print(form)
         if form.is_valid():
+            form.content = request.POST['content']
             form.save()
             return redirect("blog:detail", post_id=post_id)
         return redirect("blog:list")
