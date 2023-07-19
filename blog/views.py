@@ -95,6 +95,8 @@ class PostWrite(LoginRequiredMixin, View):
             post = form.save(commit=False)
             post.writer = request.user
             post.save()
+            print(form)
+            print(post)
             return redirect("blog:list")
 
         return redirect("blog:list")

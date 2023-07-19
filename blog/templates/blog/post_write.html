@@ -4,6 +4,52 @@
 {% block content %}
 
 {% load static %}
+<link
+            rel="stylesheet"
+            href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"
+        />
+        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+
+<h1>Blog post create</h1>
+<form action="{% url 'blog:write' %}" method="post">
+    {% csrf_token %}
+    <p>글 제목</p>
+    <p>{{ form.title }}</p>
+    <p>글 내용</p>
+    <div id="editor"></div>
+    <p hidden>{{ form.content = 'hihi' }}</p>
+    <p>카테고리</p>
+    <p>{{ form.category }}</p>
+    <a href="{% url 'blog:list' %}" class="btn btn-outline-danger">취소</a>
+    <input id='btn-submit' type="submit" value='작성' class="btn btn-outline-success">
+</form>
+
+<script>
+  const editor = new toastui.Editor({
+    el: document.querySelector('#editor'),
+    initialEditType: 'markdown',
+    previewStyle: 'vertical',
+    height: '300px'
+  });
+
+  const submitBtn = document.getElementById('btn-submit');
+  submitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const content = editor.getMarkdown(); // Get the Markdown content from the editor
+    document.querySelector('p[hidden] input').value = content; // Set the value of the hidden input field
+    submitBtn.closest('form').submit(); // Submit the form
+  });
+</script>
+
+{% endblock content %}
+
+{% comment %} {% extends 'base.html' %}
+
+
+{% block content %}
+
+{% load static %}
 <link rel="stylesheet" href="{% static 'toastui-editor/toastui-editor.css' %}">
 <script src="{% static 'toastui-editor/toastui-editor.min.js' %}"></script>
 
@@ -29,4 +75,5 @@
   });
 </script>
 
-{% endblock content %}
+{% endblock content %} {% endcomment %}
+

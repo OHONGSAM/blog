@@ -5,7 +5,7 @@ from django_tuieditor.models import MarkdownField
 
 class Post(models.Model):
     CATEGORY_CHOICES = [
-        ('HTML/CSS', 'HTML / CSS'),
+        ('HTML/CSS', 'HTML/CSS'),
         ('Python', 'Python'),
         ('Django', 'Django'),
         ('고양이', '고양이'),
