@@ -57,7 +57,7 @@
           </div>
       </div>
     </nav>
-    <div class="container mt-3">
+    <div class="container mt-3 mb-5">
         {% comment %} <a href="{% url 'blog:list' %}" class="btn btn-dark">Blog</a> {% endcomment %} 
 
         {% load static %}
@@ -66,8 +66,8 @@
         {% block content %}
         {% endblock %}
     </div>
-    {% comment %} <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+    <footer class="navbar navbar-expand-sm navbar-dark bg-dark">
         <span class="navbar-text p-0">현재 접속자 : 99999 명</span>
-    </nav> {% endcomment %}
+    </footer>
   </body>
 </html>

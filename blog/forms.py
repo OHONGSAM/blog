@@ -29,6 +29,12 @@ class CommentForm(forms.ModelForm):
         fields = ["content"]
         widgets = {
             "content": forms.Textarea(
-                attrs={"rows": "3", "cols": "35", "class": "form-control"}
+
+                attrs={"rows": "3", "cols": "35", "class": "form-control",
+                       "placeholder": "아름다운 댓글을 달아주세요"}
             )
         }
+
+
+# <textarea class = "form-control" rows = "3"
+#  placeholder = "Join the discussion and leave a comment!" > </textarea >

@@ -1,15 +1,115 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-{% block content %}
-<h2>제목 : {{ post.title }}</h2>
-<a href="{% url 'blog:list' %}" class='btn btn-outline-success'>목록</a>
-{% if post.writer == request.user %}
-<a href="{% url 'blog:edit' post_id=post.pk %}" class='btn btn-outline-success'>수정</a>
-<form action="{% url 'blog:delete' post_id=post.pk %}" method='post' class="d-inline">
-    {% csrf_token %}
-    <input type="submit" class='btn btn-outline-danger' value='삭제'>
-</form>
-{% endif %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-12">
+      <!-- Post content-->
+      <article>
+        <!-- Post header-->
+        <header class="mb-4">
+          <!-- Post title-->
+          <h1 style="font-weight: bolder;" class="mb-1">{{post.title}}</h1>
+          <!-- Post meta content-->
+          <div class="text-muted fst-italic mb-2">Posted on {{ post.created_at.month }}/{{post.created_at.day}}, {{post.created_at.year}} by {{post.writer}}</div>
+          <!-- Post categories-->
+          <a class="badge badge-secondary text-decoration-none link-light" href="#!">{{ post.category }}</a>
+        </header>
+        <!-- Preview image figure-->
+        <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+        <!-- Post content-->
+        <section class="mb-5">
+            <div id="editor"></div>
+        </section>
+        {% if request.user.is_authenticated %}
+        <form action="{% url 'blog:like' post_id=post.pk %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-outline-danger" value="♡" />
+        </form>
+        {% endif %}
+        <a href="{% url 'blog:list' %}" class="btn btn-outline-success">목록</a>
+        {% if post.writer == request.user %}
+        <a href="{% url 'blog:edit' post_id=post.pk %}" class="btn btn-outline-success">수정</a>
+        <form action="{% url 'blog:delete' post_id=post.pk %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-outline-danger" value="삭제" />
+        </form>
+        {% endif %}
+      </article>
+      <!-- Comments section-->
+      <section class="mb-5">
+          <div class="card bg-light">
+          <div class="card-body">
+              <!-- Comment form-->
+              {% if request.user.is_authenticated %}
+              <form action="{% url 'blog:cm-write' post_id=post.pk %}" method="post" class="mb-4">
+                  {% csrf_token %} {{ comment_form.content }}
+                  <input type="submit" value="+" class="btn btn-outline-success" />
+                </form>
+                {% endif %}
+                <!-- Comment List -->
+            {% if post.comment_set.all %}
+            {% for comment in post.comment_set.all %}
+            <div class="d-flex mb-4">
+              <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+              <div class="" style="margin-left: 1rem !important;">
+                <div class="font-weight-bold">{{ comment.writer }}</div>
+                {{ comment.content }}
+              </div>
+              {% if request.user == comment.writer %}
+              <form action="{% url 'blog:cm-delete' comment_id=comment.pk %}" method='post'>
+                  {% csrf_token %}
+                  <input type="submit" value='X' class="btn btn-outline-danger">
+              </form>
+              {% endif %}
+            </div>
+            {% endfor %}
+            <!-- Comment with nested comments-->
+            <!--
+            <div class="d-flex mb-4">
+              <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+              <div class="ms-3">
+                <div class="fw-bold">Commenter Name</div>
+                If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+                <div class="d-flex mt-4">
+                  <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                  <div class="ms-3">
+                    <div class="fw-bold">Commenter Name</div>
+                    And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                  </div>
+                </div>
+                <div class="d-flex mt-4">
+                  <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                  <div class="ms-3">
+                    <div class="fw-bold">Commenter Name</div>
+                    When you put money directly to a problem, it makes a good headline.
+                  </div>
+                </div>
+              </div>
+            </div>
+            -->
+            {% else %}
+            <p>작성된 댓글이 없습니다.</p>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+      
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const viewer = new toastui.Editor.factory({
+      el: document.querySelector('#editor'),
+      viewer: true,
+      initialValue : `{{ post.content }}`
+  });
+</script>
+
+{% comment %} <h2>제목 : {{ post.title }}</h2>
+
+
 <p>글쓴이 : {{ post.writer }}</p>
 <p>작성일 : {{ post.created_at }}</p>
 <p>수정일 : {{ post.updated_at }}</p>
@@ -18,78 +118,29 @@
 <p>추천수 : {{ post.likes }}</p>
 <p>카테고리 : {{ post.category }}</p>
 
-
 <table class="table table-sm table-bordered">
-    <thead class='text-center'>
-        <tr>
-            <th colspan="7">{{post.title}}</th>
-            <th colspan="3">{{ post.created_at }}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class='text-center'>
-            <td colspan="7">{{post.writer}}</td>
-            <td colspan="1">조회 {{post.views}}</td>
-            <td colspan="1">추천 {{post.likes}}</td>
-            <td colspan="1">댓글 개수</td>
-        </tr>
-        <tr>
-            <td colspan='10'>
-                <div id="editor"></div>
-            </td>
-        </tr>
-    </tbody>
+  <thead class="text-center">
+    <tr>
+      <th colspan="7">{{post.title}}</th>
+      <th colspan="3">{{ post.created_at }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="text-center">
+      <td colspan="7">{{post.writer}}</td>
+      <td colspan="1">조회 {{post.views}}</td>
+      <td colspan="1">추천 {{post.likes}}</td>
+      <td colspan="1">댓글 개수</td>
+    </tr>
+    <tr>
+      <td colspan="10">
+        내용
+      </td>
+    </tr>
+  </tbody>
 </table>
 
-{% if request.user.is_authenticated %}
-<form action="{% url 'blog:like' post_id=post.pk %}" method="post" >
-    {% csrf_token %}
-    <input type="submit" class='btn btn-outline-danger' value='♡'>
-</form>
-{% endif %}
-<hr>
 
-<!-- 댓글 목록 -->
-{% if post.comment_set.all %}
-<ul class='list-group'>
-    {% for comment in post.comment_set.all %}
-    <!-- 내용, 작성시간, 삭제버튼 -->
-    <li class='list-group-item d-flex justify-content-between align-items-center'>
-        <div>
-            <div class="badge badge-secondary">{{ comment.created_at }}</div>
-            <div class="text-wrap text-break">{{ comment.content }}</div>
-        </div>
-        
-        {% comment %} {% if request.user == comment.writer %} {% endcomment %}
-        {% if comment.writer == request.user %}
-        <form action="{% url 'blog:cm-delete' comment_id=comment.pk %}" method='post'>
-            {% csrf_token %}
-            <input type="submit" value='X' class="btn btn-outline-danger">
-        </form>
-        {% endif %}
-    </li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>작성된 댓글이 없습니다.</p>
-{% endif %}
+<hr /> {% endcomment %}
 
-<!-- 댓글 작성 -->
-{% if request.user.is_authenticated %}
-<form action="{% url 'blog:cm-write' post_id=post.pk %}" method="post">
-    {% csrf_token %}
-    {{ comment_form.content }}
-    <input type="submit" value='+' class="btn btn-outline-success">
-</form>
-{% endif %}
-
-
-<script>
-    const viewer = new toastui.Editor.factory({
-        el: document.querySelector('#editor'),
-        viewer: true,
-        initialValue : `{{ post.content }}`
-    });
-    {% comment %} viewer.setMarkdown( {{ post.content }} ); {% endcomment %}
-</script>
 {% endblock content %}
