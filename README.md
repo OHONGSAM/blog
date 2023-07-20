@@ -27,7 +27,7 @@
 
 ### 3.1 ERD model
 
-ddd
+<img width="1434" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/2ad66e11-e91b-4d9a-b191-0df65aabd40b">
 
 ### 3.2 폴더 구조
 
