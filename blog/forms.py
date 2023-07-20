@@ -9,7 +9,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ["title", "content", "category"]
+        fields = ["title", "content", "thumbnail", "category"]
         widgets = {
             "title": forms.TextInput(
                 attrs={"rows": "3", "cols": "35", "class": "form-control"}
@@ -17,6 +17,9 @@ class PostForm(forms.ModelForm):
             "content": forms.Textarea(
                 attrs={"rows": "3", "cols": "35", "class": "form-control"}
             ),
+            # "thumbnail": forms.ImageField(
+            #     attrs={"rows": "3", "cols": "35", "class": "form-control"}
+            # ),
             "category": forms.Select(
                 attrs={"rows": "3", "cols": "35", "class": "custom-select"}
             ),

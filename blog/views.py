@@ -116,6 +116,42 @@ class PostListHot(View):
         return render(request, "blog/post_list.html", context)
 
 
+class PostListCategory(View):
+    def get(self, request, category):
+        # sort 방법 추출
+        if request.GET.get('sort'):
+            sort = request.GET.get('sort')
+        else:
+            sort = 'created_at'
+        # post 데이터 by ORM
+        posts = Post.objects.filter(category=category)
+        print(posts)
+        posts_sorted = sorted(
+            posts, key=lambda x: getattr(x, sort), reverse=True)
+
+        # 페이지당 보여줄 포스트 수
+        posts_per_page = 6
+
+        # 현재 페이지 번호 가져오기
+        page_number = request.GET.get('page', 1)
+
+        # Paginator 객체 생성
+        paginator = Paginator(posts_sorted, posts_per_page)
+
+        try:
+            # 현재 페이지에 해당하는 포스트 가져오기
+            page = paginator.page(page_number)
+        except InvalidPage:
+            # 유효하지 않은 페이지 번호일 경우 첫 번째 페이지로 이동
+            page = paginator.page(1)
+
+        context = {
+            "posts": page,
+            "sort": sort,
+        }
+        return render(request, "blog/post_list.html", context)
+
+
 class PostWrite(LoginRequiredMixin, View):
     login_url = 'user:login'
 
@@ -128,7 +164,8 @@ class PostWrite(LoginRequiredMixin, View):
         return render(request, "blog/post_write.html", context)
 
     def post(self, request):
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
+        print(form)
         if form.is_valid():
             post = form.save(commit=False)
             post.writer = request.user

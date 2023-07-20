@@ -20,6 +20,8 @@ class Post(models.Model):
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    thumbnail = models.ImageField(
+        upload_to='thumbnails/', blank=True, null=True)
     # category = models.CharField(max_length=50)
 
     # 좋아요

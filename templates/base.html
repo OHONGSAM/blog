@@ -29,11 +29,11 @@
                 카테고리
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">HTML/CSS</a>
-                <a class="dropdown-item" href="#">Python</a>
-                <a class="dropdown-item" href="#">Django</a>
+                <a class="dropdown-item" href="{% url 'blog:category' category='HTML/CSS' %}">HTML/CSS</a>
+                <a class="dropdown-item" href="{% url 'blog:category' category='Python' %}">Python</a>
+                <a class="dropdown-item" href="{% url 'blog:category' category='Django' %}">Django</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">고양이</a>
+                <a class="dropdown-item" href="{% url 'blog:category' category='고양이' %}">고양이</a>
                 </div>
               </li>
             </ul>

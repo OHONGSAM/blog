@@ -4,14 +4,16 @@
 {% block content %}
 
 
-<h1>Blog post create</h1>
-<form action="{% url 'blog:write' %}" method="post">
+<h1>글 쓰기</h1>
+<form action="{% url 'blog:write' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <p>글 제목</p>
     <p>{{ form.title }}</p>
     <p>글 내용</p>
     <div id="editor"></div>
     <p hidden>{{ form.content }}</p>
+    <p>썸네일</p>
+    <p>{{ form.thumbnail }}</p>
     <p>카테고리</p>
     <p>{{ form.category }}</p>
     <input type="hidden" name="content" value="value">
