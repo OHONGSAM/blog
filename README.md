@@ -161,22 +161,24 @@ Project_2
 | <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/02eb61a5-5332-4d65-a588-b7f6df3cba2b"> | <img width="680" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/549e40cd-7a32-4a83-abae-735224ccec66"> |
 
 - 게시글 추천
-
-  |--|
-  |<img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/8e5e12c8-be84-4c53-85e9-fc94f77f07bd">|
+  <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/8e5e12c8-be84-4c53-85e9-fc94f77f07bd">
 
 - 검색
+  <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/bb1b9e71-8ac1-4599-8283-1f7fa0e11983">
 
-  |--|
-  |<img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/bb1b9e71-8ac1-4599-8283-1f7fa0e11983">|
+- 글 정렬
+
+| 작성일                                                                                                                         | 조회수                                                                                                                         | 추천수                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/f8f711db-dc86-41dc-98eb-f0bb901ccd4a"> | <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/fd6650a6-7f5b-41f4-91a6-0b98cee52541"> | <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/6a5a3e76-fa4f-42a8-804e-ad4a2bc7c45d"> |
 
 ### 5.2 세부 기능
 
 - Toast UI (글 중간 이미지 업로드, markdown)
 
-- 글 목록 정렬
-
 - 메인 페이지에 보여질 글 추출 -> 추천수 순서대로 탑 5
+
+- 썸네일
 
 - 반응형 페이지 (글, 위젯, 네이게이션바)
 
