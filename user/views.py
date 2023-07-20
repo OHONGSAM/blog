@@ -9,11 +9,11 @@ from django.http import HttpResponse
 
 
 class UserLogin(LoginView):
-    template_name = 'user/login.html'
+    template_name = "user/login.html"
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        return reverse_lazy('main')  # 로그인 성공 시 이동할 URL
+        return reverse_lazy("main")  # 로그인 성공 시 이동할 URL
 
     def form_valid(self, form):
         """로그인 성공 시 처리하는 메서드"""
@@ -24,14 +24,14 @@ class UserLogin(LoginView):
     def form_invalid(self, form):
         """로그인 실패 시 처리하는 메서드"""
         # return render(self.request, self.template_name, {'form': form, 'error_message': 'Invalid username or password'})
-        return HttpResponse('wrong id or password')
+        return HttpResponse("wrong id or password")
 
 
 class UserLogout(LogoutView):
-    next_page = 'main'
+    next_page = "main"
 
 
 class UserRegister(CreateView):
-    template_name = 'user/register.html'
+    template_name = "user/register.html"
     form_class = UserCreationForm
-    success_url = reverse_lazy('main')
+    success_url = reverse_lazy("main")
