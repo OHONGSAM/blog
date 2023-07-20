@@ -185,9 +185,20 @@ Project_2
 
 ### 5.2 세부 기능
 
-- Toast UI (글 중간 이미지 업로드, markdown)
+- Toast UI Editor (글 중간 이미지 업로드, markdown)
+  <img width="1087" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/8655056f-7f1e-4fad-bd4a-ea373a79bf7a">
 
-- 메인 페이지에 보여질 글 & 썸네일 추출 -> 추천수 순서대로 탑 5
+  ```
+    Toast UI Editor를 사용하여 markdown 문법을 사용하여 글을 작성할 수 있고, 글 중간에 이미지를 삽입할 수 있다. 이때 삽입된 이미지는 base64 형식으로 인코딩하지 않고, 서버의 '/media/uploads/'에 업로드하여 path로 접근한다.
+  ```
+
+- 메인 페이지에 게시될 글 추출
+  <img width="1179" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/7c0e5d32-4814-47c0-826f-a14214b64416">
+
+  ```
+    메인페이지에는 추천수가 많은 순서대로 최대 5개의 글이 출력된다. 이때 보여지는 썸네일 이미지는 글 작성 시 업로드할 수 있으며, 서버의 '/media/thumbnails/'에 저장된다. 썸네일이 없는 게시글은 '/media/thumbnails/no_img.jpg' 파일로 대체된다.
+    게시글 카드에는 작성일, 카테고리, 제목, 내용이 있다. 내용은 게시글의 앞부분 내용을 일부 보여주고 '...'으로 생략한다.
+  ```
 
 - 반응형 페이지 (글, 위젯, 네이게이션바)
 
