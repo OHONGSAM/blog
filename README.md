@@ -111,11 +111,9 @@ Project_2
 
 ### 4.2 User 계정
 
-회원가입 페이지
-![register](https://github.com/vBORIv/ORMI_project_2/assets/89283288/b97bbadd-1944-4582-be90-1c2d07562e3e)
-
-로그인 페이지
-![login](https://github.com/vBORIv/ORMI_project_2/assets/89283288/e6a12ed6-0682-4e0e-9503-053cafc71af6)
+| 회원가입 페이지                                                                                            | 로그인 페이지                                                                                           |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| ![register](https://github.com/vBORIv/ORMI_project_2/assets/89283288/b97bbadd-1944-4582-be90-1c2d07562e3e) | ![login](https://github.com/vBORIv/ORMI_project_2/assets/89283288/e6a12ed6-0682-4e0e-9503-053cafc71af6) |
 
 ## 5. 기능
 
@@ -148,6 +146,8 @@ Project_2
 | <img width="{50%}" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/3e261e11-268d-49d9-ba4a-09792d6ab61d"/> | <img width="{50%}" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/dba06dc4-da44-4ff1-b5cf-30a4e6b28932"/> |
 
 - 글작성
+
+<img width="{50%}" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/26e4ca5b-6adb-4a34-b213-292d61f0d208"/>
 - 글수정
 - 글삭제
 - 댓글 작성
