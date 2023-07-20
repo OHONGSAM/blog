@@ -150,17 +150,9 @@ Project_2
 
 - 게시글
 
-| 글작성                                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------------------ |
-| <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/f77abe43-6ee1-445e-a339-f95acd776b01"> |
-
-| 글수정                                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------------------ |
-| <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/032991b0-f3ed-4501-9efe-268b21bddecb"> |
-
-| 글삭제                                               |
-| ---------------------------------------------------- |
-| 글삭제는 페이지 없이 버튼 클릭 시 post 전송으로 구현 |
+| 글 작성                                                                                                                        | 글 수정                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/f77abe43-6ee1-445e-a339-f95acd776b01"> | <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/032991b0-f3ed-4501-9efe-268b21bddecb"> |
 
 - 댓글
 
@@ -169,8 +161,14 @@ Project_2
 | <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/02eb61a5-5332-4d65-a588-b7f6df3cba2b"> | <img width="680" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/549e40cd-7a32-4a83-abae-735224ccec66"> |
 
 - 게시글 추천
-- 조회수
+
+  |--|
+  |<img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/8e5e12c8-be84-4c53-85e9-fc94f77f07bd">|
+
 - 검색
+
+  |--|
+  |<img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/bb1b9e71-8ac1-4599-8283-1f7fa0e11983">|
 
 ### 5.2 세부 기능
 

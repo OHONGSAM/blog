@@ -210,7 +210,7 @@ class PostSearch(View):
         opt = request.GET.get("q-opt")
 
         # 빈 쿼리 또는 select 에러 시 전체 list
-        if not query or opt not in "1234":
+        if not query or opt not in "123":
             return redirect("blog:list")
 
         # select에 따른 qeury 결과
@@ -227,14 +227,16 @@ class PostSearch(View):
             result = [comment.post for comment in comments]
         elif opt == "3":  # 카테고리
             pass
-        elif opt == "4":  # 태그
-            pass
         else:
             result = None
 
+        print("old", result)
         # rusult에 따른 context
         if result:
-            context = {"posts": result}
+            context = {
+                "posts": result,
+                "sort": "created_at",
+            }
         else:
             context = {
                 "posts": None,
