@@ -23,7 +23,7 @@
   - JavaScript
 
 - 서비스 배포 환경
-  - AWS LightSail
+  - AWS Lightsail
 
 ### 2.2 배포 URL
 
@@ -99,6 +99,7 @@ Project_2
 - Django
 - Python
 - JavaScript
+- HTML
 - BootStrap CSS
 
 ## 4. 페이지 화면
@@ -214,14 +215,15 @@ Project_2
 
   <img width=1000 src="https://im2.ezgif.com/tmp/ezgif-2-c4e4fa8724.gif">
 
+- 존재하지 않는 게시글 처리
+
 ## 6. 향후 개선 사항
 
 ### 6.1 코드 에러
 
 - Toast UI Editor
-  ```
+
   Markdown 문법 중 code block 사용 시 조회 및 수정에서 TUI가 인식되지 않는 오류
-  ```
 
 ### 6.2 코드 개선
 
@@ -241,6 +243,8 @@ Project_2
 
 - 글 목록을 조건에 따라 오름차순으로도 가능하도록
 
+- 조회 및 추천 중복 카운트
+
 - 메인 페이지 위젯
 
   - 검색 시 검색 페이지로 연결
@@ -252,6 +256,7 @@ Project_2
 
   - 대댓글 기능
   - 댓글 좋아요 및 신고 기능
+  - 댓글 유저 프로필
 
 - 유저
 
