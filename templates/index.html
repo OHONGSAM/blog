@@ -79,7 +79,8 @@
                         {% endif %}
                         <div class="card-body">
                             <div class="small text-muted">{{ top.created_at.month }}/{{top.created_at.day}}, {{top.created_at.year}}</div>
-                            <h2 class="card-title">{{top.title}}</h2>
+                            <a class="badge badge-secondary text-decoration-none link-light mb-2" href="{% url 'blog:category' category=top.category  %}">{{ top.category }}</a>
+                            <div class="flex-fill"><h2 class="card-title">{{top.title}}</h2></div>
                             <p class="card-text">{{top.content}}</p>
                             <a class="btn btn-primary" href="{% url 'blog:detail' post_id=top.pk %}">Read more →</a>
                         </div>
@@ -91,9 +92,10 @@
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
-                                <a href="{% url 'blog:detail' post_id=post.pk %}"><img class="card-img-top" src="http://127.0.0.1:8000/media/thumbnails/no_img.jpg" alt="..."></a>
+                                <a href="{% url 'blog:detail' post_id=post.pk %}"><img class="card-img-top" src="media/thumbnails/no_img.jpg" alt="..."></a>
                                 <div class="card-body">
                                     <div class="small text-muted">{{ post.created_at.year }}.{{post.created_at.month}}.{{post.created_at.day}}</div>
+                                    <a class="badge badge-secondary text-decoration-none link-light mb-2" href="{% url 'blog:category' category=post.category  %}">{{ post.category }}</a>
                                     <h2 class="card-title h4">{{ post.title }}</h2>
                                     <p class="card-text">{{post.content}}</p>
                                     <a class="btn btn-primary" href="{% url 'blog:detail' post_id=post.pk %}">Read more →</a>

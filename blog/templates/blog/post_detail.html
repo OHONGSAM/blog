@@ -12,7 +12,7 @@
           <!-- Post meta content-->
           <div class="text-muted fst-italic mb-2">Posted on by {{post.writer}}</div>
           <!-- Post categories-->
-          <a class="badge badge-secondary text-decoration-none link-light" href="#!">{{ post.category }}</a>
+          <a class="badge badge-secondary text-decoration-none link-light" href="{% url 'blog:category' category=post.category  %}">{{ post.category }}</a>
         </header>
         <!-- Preview image figure-->
         {% if post.thumbnail %}
