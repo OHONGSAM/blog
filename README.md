@@ -107,7 +107,8 @@ Project_2
 
 | 메인 페이지                                                                                            | 전체글 목록                                                                                                 |
 | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| ![main](https://github.com/vBORIv/ORMI_project_2/assets/89283288/f71c8c45-5def-44b8-928a-a4713022bcfe) | ![post-list](https://github.com/vBORIv/ORMI_project_2/assets/89283288/36d53fce-88bd-4825-b613-427ec8355cf6) |
+|<img width=1000 src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/607a1394-b396-4700-96d8-de33447a08d1">|<img width=1000 src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/36d53fce-88bd-4825-b613-427ec8355cf6">
+
 
 ### 4.2 User 계정
 
