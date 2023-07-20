@@ -105,11 +105,9 @@ Project_2
 
 ### 4.1 Blog
 
-메인 페이지
-![main](https://github.com/vBORIv/ORMI_project_2/assets/89283288/e79dc3ff-2cbf-467a-b538-d79808a40af8)
-
-글 전체 목록
-![blog_list](https://github.com/vBORIv/ORMI_project_2/assets/89283288/495c4197-c53c-4ebb-8e20-5e5c1c1b8025)
+| 메인 페이지                                                                                            | 전체글 목록                                                                                                 |
+| ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| ![main](https://github.com/vBORIv/ORMI_project_2/assets/89283288/e79dc3ff-2cbf-467a-b538-d79808a40af8) | ![blog_list](https://github.com/vBORIv/ORMI_project_2/assets/89283288/495c4197-c53c-4ebb-8e20-5e5c1c1b8025) |
 
 ### 4.2 User 계정
 
