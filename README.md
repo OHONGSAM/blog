@@ -143,9 +143,9 @@ Project_2
 
 - 로그인 로그아웃
 
-| 로그인                                                                                                     | 로그아웃                                                                                                    |
+| 로그인 상태                                                                                                     | 로그아웃 상태                                                                                                    |
 | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| ![logining](https://github.com/vBORIv/ORMI_project_2/assets/89283288/3e261e11-268d-49d9-ba4a-09792d6ab61d) | ![logouting](https://github.com/vBORIv/ORMI_project_2/assets/89283288/dba06dc4-da44-4ff1-b5cf-30a4e6b28932) |
+|![image](https://github.com/vBORIv/ORMI_project_2/assets/89283288/971a6288-a923-47fe-a9d1-b904fd2fd4b9)|![image](https://github.com/vBORIv/ORMI_project_2/assets/89283288/9a6e3814-f028-4ca1-ab7f-8cdef49454db)|
 
 - 게시글
 
@@ -170,12 +170,13 @@ Project_2
 | <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/02eb61a5-5332-4d65-a588-b7f6df3cba2b"> | <img width="680" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/549e40cd-7a32-4a83-abae-735224ccec66"> |
 
 - 게시글 조회수
-  <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/8e5e12c8-be84-4c53-85e9-fc94f77f07bd">
+  
 
 - 게시글 추천수
 
 - 검색
-  <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/bb1b9e71-8ac1-4599-8283-1f7fa0e11983">
+
+  ![search](https://github.com/vBORIv/ORMI_project_2/assets/89283288/decfb5c8-547a-4818-b131-0889a6175018)
 
 - 글 정렬
 
