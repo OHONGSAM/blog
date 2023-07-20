@@ -152,7 +152,7 @@ Project_2
 
 | 글 작성                                                                                                                            | 글 수정                                                                                                                           |
 | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/ebc093d4-1c39-4c4d-802b-d5d01c2ab350"> | <img width="700" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/032991b0-f3ed-4501-9efe-268b21bddecb"> |
+| <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/ebc093d4-1c39-4c4d-802b-d5d01c2ab350"> | <img width="800" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/032991b0-f3ed-4501-9efe-268b21bddecb"> |
 
 <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/f77abe43-6ee1-445e-a339-f95acd776b01">
 
