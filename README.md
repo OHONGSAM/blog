@@ -103,15 +103,17 @@ Project_2
 
 ## 4. 페이지 화면
 
-### 4.1 블로그 화면
+### 4.1 Blog
 
 메인 페이지
-![main](https://github.com/vBORIv/ORMI_project_2/assets/89283288/b2b63741-cce3-468e-8916-8478968a84a0)
+![main](https://github.com/vBORIv/ORMI_project_2/assets/89283288/e79dc3ff-2cbf-467a-b538-d79808a40af8)
+
+<img width="80%" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/e79dc3ff-2cbf-467a-b538-d79808a40af8"/>
 
 글 전체 목록
 ![blog_list](https://github.com/vBORIv/ORMI_project_2/assets/89283288/495c4197-c53c-4ebb-8e20-5e5c1c1b8025)
 
-### 4.2 유저 관련 화면
+### 4.2 User 계정
 
 회원가입 페이지
 ![register](https://github.com/vBORIv/ORMI_project_2/assets/89283288/b97bbadd-1944-4582-be90-1c2d07562e3e)
@@ -147,10 +149,51 @@ Project_2
 
 - 글작성
 - 글수정
--
+- 글삭제
+- 댓글 작성
+- 댓글 수정
+- 게시글 추천
+- 조회수
+- 검색
 
 ### 5.2 세부 기능
 
+- Toast UI (글 중간 이미지 업로드, markdown)
+
+- 글 목록 정렬
+
+- 메인 페이지에 보여질 글 추출 -> 추천수 순서대로 탑 5
+
+- 반응형 페이지 (글, 위젯, 네이게이션바)
+
 ## 6. 향후 개선 사항
+
+### 6.1 코드 에러
+
+- Toast UI Markdown 문법 중 code block 사용 시 조회 및 수정에서 인식이 안되는 오류
+
+### 6.2 코드 개선
+
+- 카테고리 별 페이지, 전체글, 인기글 페이지가 거의 같은 기능인데 각각 다른 view 클래스로 구현됨
+
+### 6.3 추가 기능 구현
+
+- 글 목록을 조건에 따라 오름차순으로도 가능하도록
+
+- 메인 페이지 위젯
+
+  - 검색 시 검색 페이지로 연결
+  - 댓글을 많이 작성한 유저 수
+
+- Django의 session 수를 활용하여 현재 접속자 수를 대략적으로 계산
+
+- 댓글
+
+  - 대댓글 기능
+  - 댓글 좋아요 및 신고 기능
+
+- 유저
+  - 개인정보 수정 (비밀번호, 프로필 사진 ,,)
+  - 프로필 페이지
 
 ## 7. 개발 과정에서 느낀점
