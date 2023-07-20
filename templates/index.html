@@ -95,7 +95,11 @@
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
+                                {% if post.thumbnail %}
+                                <a href="{% url 'blog:detail' post_id=post.pk %}"><img class="card-img-top" src="{{post.thumbnail.url}}" alt="..."></a>
+                                {% else %}
                                 <a href="{% url 'blog:detail' post_id=post.pk %}"><img class="card-img-top" src="media/thumbnails/no_img.jpg" alt="..."></a>
+                                {% endif %}
                                 <div class="card-body">
                                     <div class="small text-muted">{{ post.created_at.year }}.{{post.created_at.month}}.{{post.created_at.day}}</div>
                                     <a class="badge badge-secondary text-decoration-none link-light mb-2" href="{% url 'blog:category' category=post.category  %}">{{ post.category }}</a>

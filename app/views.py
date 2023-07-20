@@ -8,7 +8,7 @@ class IndexMain(View):
         hotposts = Post.objects.order_by("-likes")[:5]
         if hotposts:
             for post in hotposts:
-                post.content = post.content[:30] + "…"
+                post.content = post.content[:200] + "…"
             toppost = hotposts[0]
             context = {
                 "top": toppost,

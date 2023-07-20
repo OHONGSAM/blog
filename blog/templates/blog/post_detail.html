@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
+
 
 <div class="container mt-5">
   <div class="row">
@@ -8,9 +10,9 @@
         <!-- Post header-->
         <header class="mb-4">
           <!-- Post title-->
-          <h1 style="font-weight: bolder;" class="mb-1">{{post.title}}</h1>
+          <h1 style="font-weight: bolder;" class="mb-1">{{ post.title }}</h1>
           <!-- Post meta content-->
-          <div class="text-muted fst-italic mb-2">Posted on by {{post.writer}}</div>
+          <div class="text-muted fst-italic mb-2">Posted on by {{ post.writer }}</div>
           <!-- Post categories-->
           <a class="badge badge-secondary text-decoration-none link-light" href="{% url 'blog:category' category=post.category  %}">{{ post.category }}</a>
         </header>
@@ -105,44 +107,8 @@
   const viewer = new toastui.Editor.factory({
       el: document.querySelector('#editor'),
       viewer: true,
-      initialValue : `{{ post.content }}`
+      initialValue : `{{ post.content }}`,
   });
 </script>
-
-{% comment %} <h2>제목 : {{ post.title }}</h2>
-
-
-<p>글쓴이 : {{ post.writer }}</p>
-<p>작성일 : {{ post.created_at }}</p>
-<p>수정일 : {{ post.updated_at }}</p>
-<p>내용 : {{ post.content }}</p>
-<p>조회수 : {{ post.views }}</p>
-<p>추천수 : {{ post.likes }}</p>
-<p>카테고리 : {{ post.category }}</p>
-
-<table class="table table-sm table-bordered">
-  <thead class="text-center">
-    <tr>
-      <th colspan="7">{{post.title}}</th>
-      <th colspan="3">{{ post.created_at }}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="text-center">
-      <td colspan="7">{{post.writer}}</td>
-      <td colspan="1">조회 {{post.views}}</td>
-      <td colspan="1">추천 {{post.likes}}</td>
-      <td colspan="1">댓글 개수</td>
-    </tr>
-    <tr>
-      <td colspan="10">
-        내용
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-<hr /> {% endcomment %}
 
 {% endblock content %}
