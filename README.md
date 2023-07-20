@@ -158,11 +158,11 @@ Project_2
 
 | HTML/CSS                                                                                                                           | Python                                                                                                                             |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/af986476-7b71-4f0b-95c3-8fc6366a218f"> | <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/9018affc-fe70-4b6f-a28e-935cf7294095"> |
+| <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/b2909234-e6e7-4ee1-ba8d-0bf649b73a2b"> | <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/af986476-7b71-4f0b-95c3-8fc6366a218f"> |
 
 | Django                                                                                                                             | 고양이                                                                                                                             |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/b2909234-e6e7-4ee1-ba8d-0bf649b73a2b"> | <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/39289a8e-8f3c-42c9-a386-4de5ed20d330"> |
+| <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/9018affc-fe70-4b6f-a28e-935cf7294095"> | <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/39289a8e-8f3c-42c9-a386-4de5ed20d330"> |
 
 - 댓글
 
