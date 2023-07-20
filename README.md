@@ -152,16 +152,18 @@ Project_2
 
 | 글 작성                                                                                                                        | 글 수정                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/f77abe43-6ee1-445e-a339-f95acd776b01"> | <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/032991b0-f3ed-4501-9efe-268b21bddecb"> |
+| <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/ebc093d4-1c39-4c4d-802b-d5d01c2ab350"> | <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/032991b0-f3ed-4501-9efe-268b21bddecb"> |
 
-- 댓글
+<img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/f77abe43-6ee1-445e-a339-f95acd776b01">
 
 | 비회원                                                                                                                             | 회원                                                                                                                              |
 | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/02eb61a5-5332-4d65-a588-b7f6df3cba2b"> | <img width="680" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/549e40cd-7a32-4a83-abae-735224ccec66"> |
 
-- 게시글 추천
+- 게시글 조회수
   <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/8e5e12c8-be84-4c53-85e9-fc94f77f07bd">
+
+- 게시글 추천수
 
 - 검색
   <img width="" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/bb1b9e71-8ac1-4599-8283-1f7fa0e11983">
@@ -221,7 +223,12 @@ Project_2
   - 댓글 좋아요 및 신고 기능
 
 - 유저
+
   - 개인정보 수정 (비밀번호, 프로필 사진 ,,)
   - 프로필 페이지
+
+- UI
+  - 로그인, 회원가입 화면
+  -
 
 ## 7. 개발 과정에서 느낀점
