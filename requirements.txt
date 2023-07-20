@@ -3,6 +3,7 @@ autopep8==2.0.2
 cffi==1.15.1
 cmarkgfm==2022.10.27
 Django==4.2.3
+Pillow==9.5.0
 pycodestyle==2.10.0
 pycparser==2.21
 sqlparse==0.4.4
