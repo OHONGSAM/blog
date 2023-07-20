@@ -1,7 +1,5 @@
 # blog/forms.py
 from django import forms
-from django_tuieditor.fields import MarkdownFormField
-from django_tuieditor.widgets import MarkdownEditorWidget
 from .models import Post, Comment
 
 

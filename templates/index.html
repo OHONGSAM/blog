@@ -71,6 +71,7 @@
                 <!-- Blog entries-->
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
+                    {% if top %}
                     <div class="card mb-4">
                         {% if top.thumbnail %}
                         <a href="{% url 'blog:detail' post_id=top.pk %}"><img class="card-img-top" src="{{top.thumbnail.url}}" alt="..."></a>
@@ -85,6 +86,8 @@
                             <a class="btn btn-primary" href="{% url 'blog:detail' post_id=top.pk %}">Read more →</a>
                         </div>
                     </div>
+                    {% endif %}
+                    
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
                         {% if posts %}
