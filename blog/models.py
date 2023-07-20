@@ -5,10 +5,10 @@ from django_tuieditor.models import MarkdownField
 
 class Post(models.Model):
     CATEGORY_CHOICES = [
-        ('HTML/CSS', 'HTML/CSS'),
-        ('Python', 'Python'),
-        ('Django', 'Django'),
-        ('고양이', '고양이'),
+        ("HTML/CSS", "HTML/CSS"),
+        ("Python", "Python"),
+        ("Django", "Django"),
+        ("고양이", "고양이"),
     ]
 
     title = models.CharField(max_length=200)
@@ -20,8 +20,7 @@ class Post(models.Model):
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
-    thumbnail = models.ImageField(
-        upload_to='thumbnails/', blank=True, null=True)
+    thumbnail = models.ImageField(upload_to="thumbnails/", blank=True, null=True)
     # category = models.CharField(max_length=50)
 
     # 좋아요

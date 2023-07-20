@@ -72,7 +72,11 @@
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
                     <div class="card mb-4">
-                        <a href="{% url 'blog:detail' post_id=top.pk %}"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."></a>
+                        {% if top.thumbnail %}
+                        <a href="{% url 'blog:detail' post_id=top.pk %}"><img class="card-img-top" src="{{top.thumbnail.url}}" alt="..."></a>
+                        {% else %}
+                        <a href="{% url 'blog:detail' post_id=top.pk %}"><img class="card-img-top" src="media/thumbnails/no_img.jpg" alt="..."></a>
+                        {% endif %}
                         <div class="card-body">
                             <div class="small text-muted">{{ top.created_at.month }}/{{top.created_at.day}}, {{top.created_at.year}}</div>
                             <h2 class="card-title">{{top.title}}</h2>
@@ -87,7 +91,7 @@
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."></a>
+                                <a href="{% url 'blog:detail' post_id=post.pk %}"><img class="card-img-top" src="http://127.0.0.1:8000/media/thumbnails/no_img.jpg" alt="..."></a>
                                 <div class="card-body">
                                     <div class="small text-muted">{{ post.created_at.year }}.{{post.created_at.month}}.{{post.created_at.day}}</div>
                                     <h2 class="card-title h4">{{ post.title }}</h2>

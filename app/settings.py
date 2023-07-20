@@ -27,8 +27,8 @@ SECRET_KEY = "django-insecure-#uzf!slly@5u9q9j9dz0vubd%et4)n(zk1!f^j+)tjd##=c@=@
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '13.209.37.52',  # AWS LightSail
-    '127.0.0.1',  # local
+    "13.209.37.52",  # AWS LightSail
+    "127.0.0.1",  # local
 ]
 
 
@@ -60,7 +60,7 @@ ROOT_URLCONF = "app.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        'DIRS': [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -121,10 +121,10 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "static/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "media/"
 
 # Default primary key field type

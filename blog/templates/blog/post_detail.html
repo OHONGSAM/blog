@@ -1,5 +1,4 @@
 {% extends "base.html" %} {% block content %}
-<p>this is thumbnail {{post.thumbnail}}</p>
 
 <div class="container mt-5">
   <div class="row">
@@ -16,7 +15,9 @@
           <a class="badge badge-secondary text-decoration-none link-light" href="#!">{{ post.category }}</a>
         </header>
         <!-- Preview image figure-->
-        <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+        {% if post.thumbnail %}
+        <figure class="mb-4"><img class="img-fluid rounded" src="{{ post.thumbnail.url }}" alt="..." /></figure>
+        {% endif %}
         <!-- Post content-->
         <section class="mb-5">
             <div id="editor"></div>

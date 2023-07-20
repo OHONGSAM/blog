@@ -6,7 +6,6 @@ from .models import Post, Comment
 
 
 class PostForm(forms.ModelForm):
-
     class Meta:
         model = Post
         fields = ["title", "content", "thumbnail", "category"]
@@ -17,9 +16,14 @@ class PostForm(forms.ModelForm):
             "content": forms.Textarea(
                 attrs={"rows": "3", "cols": "35", "class": "form-control"}
             ),
-            # "thumbnail": forms.ImageField(
-            #     attrs={"rows": "3", "cols": "35", "class": "form-control"}
-            # ),
+            "thumbnail": forms.ClearableFileInput(
+                attrs={
+                    "rows": "3",
+                    "cols": "35",
+                    "class": "form-control",
+                    "id": "formFile",
+                }
+            ),
             "category": forms.Select(
                 attrs={"rows": "3", "cols": "35", "class": "custom-select"}
             ),
@@ -32,9 +36,12 @@ class CommentForm(forms.ModelForm):
         fields = ["content"]
         widgets = {
             "content": forms.Textarea(
-
-                attrs={"rows": "3", "cols": "35", "class": "form-control",
-                       "placeholder": "아름다운 댓글을 달아주세요"}
+                attrs={
+                    "rows": "3",
+                    "cols": "35",
+                    "class": "form-control",
+                    "placeholder": "아름다운 댓글을 달아주세요",
+                }
             )
         }
 
