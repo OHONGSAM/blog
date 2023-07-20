@@ -108,8 +108,6 @@ Project_2
 메인 페이지
 ![main](https://github.com/vBORIv/ORMI_project_2/assets/89283288/e79dc3ff-2cbf-467a-b538-d79808a40af8)
 
-<img width="80%" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/e79dc3ff-2cbf-467a-b538-d79808a40af8"/>
-
 글 전체 목록
 ![blog_list](https://github.com/vBORIv/ORMI_project_2/assets/89283288/495c4197-c53c-4ebb-8e20-5e5c1c1b8025)
 
@@ -147,6 +145,10 @@ Project_2
 
 ### 5.2 주요 기능
 
+| 로그인                                                                                                                   | 로그아웃                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| <img width="{50%}" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/3e261e11-268d-49d9-ba4a-09792d6ab61d"/> | <img width="{50%}" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/dba06dc4-da44-4ff1-b5cf-30a4e6b28932"/> |
+
 - 글작성
 - 글수정
 - 글삭제
@@ -166,6 +168,8 @@ Project_2
 
 - 반응형 페이지 (글, 위젯, 네이게이션바)
 
+- Pagenation
+
 ## 6. 향후 개선 사항
 
 ### 6.1 코드 에러
@@ -175,6 +179,16 @@ Project_2
 ### 6.2 코드 개선
 
 - 카테고리 별 페이지, 전체글, 인기글 페이지가 거의 같은 기능인데 각각 다른 view 클래스로 구현됨
+
+- search 시 검색 키워드에 일치하는 post object를 db에서 검색함
+  -> db 호출이 많아져 오래 걸릴 수 있음
+  -> 현재 화면에 출력하고 있는 목록에서 찾으면 DB 호출수 낮출 수 있음
+
+- 정렬 시 get request로 정렬 방법을 읽어서 order by로 DB 호출함
+  -> DB 호출이 많아져 오래 걸릴 수 있음 & 검색 결과를 정렬하지 못함
+  -> 현재 화면에 출력하고 있는 목록을 이용해서 정렬하는 방법 필요 (dictsort)
+
+-
 
 ### 6.3 추가 기능 구현
 
