@@ -20,15 +20,13 @@ def upload_image(request, post_id=None):
         filename = image.name
         upload_path = os.path.join(settings.MEDIA_ROOT, "uploads", filename)
         local_path = "http://127.0.0.1:8000/media"
-        # upload_path = os.path.join(local_path, 'uploads', filename)
 
-        # Save the image to the static folder
         with open(upload_path, "wb") as file:
             for chunk in image.chunks():
                 file.write(chunk)
 
-        # Create the URL for the uploaded image
         image_url = local_path + "/uploads/" + filename
+        # image_url = settings.MEDIA_URL + "/uploads/" + filename
 
         return JsonResponse({"image_url": image_url})
 
