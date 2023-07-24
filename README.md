@@ -1,6 +1,6 @@
-# [ORMI_Project] Django-Blog
+# Django-Blog-Project
 
-- Django Blog 제작 개인프로젝트 repo 입니다
+- Django Blog 제작을 위한 개인프로젝트 repository 입니다
 
 ## 1. 프로젝트 목표
 
