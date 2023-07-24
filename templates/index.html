@@ -38,7 +38,15 @@
             </ul>
             <ul class="navbar-nav ms-auto">
                 {% if request.user.is_authenticated %}
-                <li class='nav-item'><span class="navbar-text">환영합니다 {{request.user}} 님 |</span></li>
+                <li class='nav-item'>
+                  <span class="navbar-text">
+                    환영합니다
+                    <a href={% url 'user:profile' %}>
+                      <img src="{{ user.profile_img.url }}" alt="profile_img" height=15>
+                      {{user.username}}
+                    </a> 님 |
+                  </span>
+                </li>
                 {% endif %}
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">

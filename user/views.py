@@ -1,14 +1,25 @@
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import (
+    LoginView,
+    LogoutView,
+    PasswordChangeView,
+    PasswordChangeDoneView,
+)
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from django.views.generic import CreateView
+from .forms import UserRegisterForm, UserProfileForm
+
+# from django.contrib.auth.models import User
+from .models import User
 from django.urls import reverse_lazy
-from django.contrib import messages
 from django.http import HttpResponse
+from django.views import View
 
 
 class UserLogin(LoginView):
+    model = User
     template_name = "user/login.html"
     redirect_authenticated_user = True
 
@@ -28,10 +39,27 @@ class UserLogin(LoginView):
 
 
 class UserLogout(LogoutView):
+    model = User
     next_page = "main"
 
 
 class UserRegister(CreateView):
     template_name = "user/register.html"
-    form_class = UserCreationForm
+    form_class = UserRegisterForm
     success_url = reverse_lazy("main")
+
+
+class UserProfile(LoginRequiredMixin, UpdateView):
+    model = User  # 업데이트할 모델 지정 (여기서는 User 모델 사용)
+    form_class = UserProfileForm
+    template_name = "user/profile.html"  # 사용할 템플릿 지정
+    success_url = reverse_lazy("main")  # 업데이트 후 리다이렉트할 URL 지정
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+
+class UserPWChange(LoginRequiredMixin, PasswordChangeView):
+    model = User
+    template_name = "user/password.html"  # 사용할 템플릿 지정
+    success_url = reverse_lazy("main")  # 비밀번호 변경 후 리다이렉트할 URL 지정

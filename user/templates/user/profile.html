@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ user.username }} 님의 프로필입니다.</h2>
+  <form action="{% url 'user:profile' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table">
+        <tr>
+            <td>아이디</td>
+            <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td><a href="{% url 'user:password' %}" class="btn ">비밀번호 변경</a></td>
+        </tr>
+        <tr>
+            <td>프로필 사진 <img src="{{ user.profile_img.url }}" alt="profile_img" height=100></td>
+            <td>{{ form.profile_img }}</td>
+        </tr>
+    </table>
+    
+    
+    <a href="{% url 'main' %}" class='btn btn-outline-danger'>취소</a>
+    <button type="submit" class='btn btn-outline-success'>변경</button>
+  </form>
+{% endblock %}

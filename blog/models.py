@@ -1,5 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
+
+# from django.contrib.auth.models import User
+from user.models import User
 
 
 class Post(models.Model):
@@ -20,7 +22,6 @@ class Post(models.Model):
     likes = models.IntegerField(default=0)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     thumbnail = models.ImageField(upload_to="thumbnails/", blank=True, null=True)
-    # category = models.CharField(max_length=50)
 
     # 좋아요
     # 조회수
