@@ -14,7 +14,14 @@
             <td><a href="{% url 'user:password' %}" class="btn ">비밀번호 변경</a></td>
         </tr>
         <tr>
-            <td>프로필 사진 <img src="{{ user.profile_img.url }}" alt="profile_img" height=100></td>
+            <td>
+                <p>프로필 사진</p>
+                {% if user.profile_img %}
+                <img src="{{ user.profile_img.url }}" alt="profile_img" height=100
+                {% else %}
+                <img src="/media/profiles/no_profile.png" alt="profile_img" height=100
+                {% endif %}
+                ></td>
             <td>{{ form.profile_img }}</td>
         </tr>
     </table>

@@ -43,7 +43,11 @@
                   <span class="navbar-text">
                     환영합니다
                     <a href={% url 'user:profile' %}>
+                      {% if user.profile_img %}
                       <img src="{{ user.profile_img.url }}" alt="profile_img" height=15>
+                      {% else %}
+                      <img src="/media/profiles/no_profile.png" alt="profile_img" height=15>
+                      {% endif %}
                       {{user.username}}
                     </a> 님 |
                   </span>
@@ -75,7 +79,7 @@
         {% endblock %}
     </div>
     <footer class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
-        <span class="navbar-text">현재 접속자 : 99999 명</span>
+        <span class="navbar-text">현재 접속자 : 99,999 명</span>
     </footer>
   </body>
 </html>

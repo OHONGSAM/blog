@@ -7,8 +7,19 @@ from .forms import PostForm, CommentForm
 from .models import Post, Comment
 
 import os
+import re
+
 from django.conf import settings
 from django.http import JsonResponse
+
+
+def find_img_link(content):
+    pattern = r"!\[([^]]+)\]\(([^)]+)\)"
+    match = re.search(pattern, content)
+    if match:
+        name, link = match.groups()
+        return name, link
+    return None, None
 
 
 def upload_image(request, post_id=None):
@@ -144,15 +155,17 @@ class PostWrite(LoginRequiredMixin, View):
         context = {
             "form": form,
         }
-        # return render(request, "django_tuieditor/editor.html")
         return render(request, "blog/post_write.html", context)
 
     def post(self, request):
         form = PostForm(request.POST, request.FILES)
-        print(form)
+
         if form.is_valid():
+            name, link = find_img_link(str(form))
+
             post = form.save(commit=False)
             post.writer = request.user
+            post.thumbnail_url = link
             post.content = request.POST["content"]
             post.save()
             return redirect("blog:list")
@@ -187,9 +200,11 @@ class PostEdit(LoginRequiredMixin, View):
     def post(self, request, post_id):
         post = Post.objects.get(pk=post_id)
         form = PostForm(request.POST, instance=post)
-        print(form)
+
         if form.is_valid():
+            name, link = find_img_link(str(form))
             form.content = request.POST["content"]
+            post.thumbnail_url = link
             form.save()
             return redirect("blog:detail", post_id=post_id)
         return redirect("blog:list")

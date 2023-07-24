@@ -53,18 +53,25 @@
                 <!-- Comment List -->
             {% if post.comment_set.all %}
             {% for comment in post.comment_set.all %}
-            <div class="d-flex mb-4">
-              <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-              <div class="" style="margin-left: 1rem !important;">
+            <div class="row mb-4">
+              {% if comment.writer.profile_img %}
+              <div class="col-1"><img class="rounded-circle" src="{{ comment.writer.profile_img.url }}" alt="profile_img" width=50 height=50/></div>
+              {% else %}
+              <div class="col-1"><img class="rounded-circle" src="/media/profiles/no_profile.png" alt="profile_img" width=50 height=50 /></div>
+              {% endif %}
+
+              <div class="col-10" >
                 <div class="font-weight-bold">{{ comment.writer }}</div>
                 {{ comment.content }}
               </div>
+
               {% if request.user == comment.writer %}
-              <form action="{% url 'blog:cm-delete' comment_id=comment.pk %}" method='post'>
+              <form action="{% url 'blog:cm-delete' comment_id=comment.pk %}" method='post' class='col'>
                   {% csrf_token %}
                   <input type="submit" value='X' class="btn btn-outline-danger">
               </form>
               {% endif %}
+
             </div>
             {% endfor %}
             <!-- Comment with nested comments-->

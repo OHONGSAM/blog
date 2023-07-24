@@ -42,7 +42,11 @@
                   <span class="navbar-text">
                     환영합니다
                     <a href={% url 'user:profile' %}>
+                      {% if user.profile_img %}
                       <img src="{{ user.profile_img.url }}" alt="profile_img" height=15>
+                      {% else %}
+                      <img src="/media/profiles/no_profile.png" alt="profile_img" height=15>
+                      {% endif %}
                       {{user.username}}
                     </a> 님 |
                   </span>
@@ -81,10 +85,10 @@
                     <!-- Featured blog post-->
                     {% if top %}
                     <div class="card mb-4">
-                        {% if top.thumbnail %}
-                        <a href="{% url 'blog:detail' post_id=top.pk %}"><img class="card-img-top" src="{{top.thumbnail.url}}" alt="..."></a>
+                        {% if top.thumbnail_url %}
+                        <a href="{% url 'blog:detail' post_id=top.pk %}"><img class="card-img-top" src="{{top.thumbnail_url}}" width=700px height=400px alt="..."></a>
                         {% else %}
-                        <a href="{% url 'blog:detail' post_id=top.pk %}"><img class="card-img-top" src="media/thumbnails/no_img.jpg" alt="..."></a>
+                        <a href="{% url 'blog:detail' post_id=top.pk %}"><img class="card-img-top" src="media/thumbnails/no_img.jpg" width=700px height=400px alt="..."></a>
                         {% endif %}
                         <div class="card-body">
                             <div class="small text-muted">{{ top.created_at.month }}/{{top.created_at.day}}, {{top.created_at.year}}</div>
@@ -103,10 +107,10 @@
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
-                                {% if post.thumbnail %}
-                                <a href="{% url 'blog:detail' post_id=post.pk %}"><img class="card-img-top" src="{{post.thumbnail.url}}" alt="..."></a>
+                                {% if post.thumbnail_url %}
+                                <a href="{% url 'blog:detail' post_id=post.pk %}"><img class="card-img-top" width=700px height=200px src="{{post.thumbnail_url}}" alt="..."></a>
                                 {% else %}
-                                <a href="{% url 'blog:detail' post_id=post.pk %}"><img class="card-img-top" src="media/thumbnails/no_img.jpg" alt="..."></a>
+                                <a href="{% url 'blog:detail' post_id=post.pk %}"><img class="card-img-top" width=700px height=200px src="media/thumbnails/no_img.jpg" alt="..."></a>
                                 {% endif %}
                                 <div class="card-body">
                                     <div class="small text-muted">{{ post.created_at.year }}.{{post.created_at.month}}.{{post.created_at.day}}</div>
@@ -122,21 +126,6 @@
                         <p>등록된 게시글이 없습니다.</p>
                         {% endif %}                        
                     </div>
-                    <!-- Pagination-->
-                    <!--
-                    <nav aria-label="Pagination">
-                        <hr class="my-0">
-                        <ul class="pagination justify-content-center my-4">
-                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-                            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">15</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-                        </ul>
-                    </nav>
-                    -->
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">

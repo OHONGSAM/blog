@@ -22,6 +22,7 @@ class Post(models.Model):
     likes = models.IntegerField(default=0)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     thumbnail = models.ImageField(upload_to="thumbnails/", blank=True, null=True)
+    thumbnail_url = models.CharField(max_length=256, blank=True, null=True)
 
     # 좋아요
     # 조회수
