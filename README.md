@@ -16,13 +16,13 @@
 
 - <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
 
-- <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
+- <img src="https://img.shields.io/badge/sqlite-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
 
 - <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
 
-- <img src="https://img.shields.io/badge/BootStrap-7952B3?style=for-the-badge&logo=BootStrap&logoColor=white">
+- <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
 
-- <img src="https://img.shields.io/badge/sqlite-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
+- <img src="https://img.shields.io/badge/BootStrap-7952B3?style=for-the-badge&logo=BootStrap&logoColor=white">
 
 #### - 서비스 배포 환경
 
@@ -145,7 +145,7 @@ Project_2
   | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
   | ![loging](https://github.com/vBORIv/Django-Blog-Project/assets/89283288/cd92d699-ea3b-4de7-b953-b254616e39e5) | ![logouting](https://github.com/vBORIv/Django-Blog-Project/assets/89283288/a5889b85-305e-4951-87b6-63d97d0080dd) |
 
-  Navigation Bar는 base.html에서 출력하며, 페이지 인덱싱과 함께 로그인, 로그아웃, 회원가입 버튼을 출력한다. 로그인되어있는 경우에는 로그인된 user의 프로필 사진과 함께 id와 로그아웃 버튼이 출력된다. 프로필 이미지가 없는 유저는 서버에 업로드되어 있는 no_profile.png가 출력된다. 로그인되어있지 않은 경우에는 로그인과 회원가입 버튼을 출력한다.
+  네비게이션 바는 base.html에서 출력하며, 페이지 인덱싱과 함께 로그인, 로그아웃, 회원가입 버튼을 출력한다. 로그인되어있는 경우에는 로그인된 user의 프로필 사진과 함께 id와 로그아웃 버튼이 출력된다. 프로필 이미지가 없는 유저는 서버에 업로드되어 있는 no_profile.png가 출력된다. 로그인되어있지 않은 경우에는 로그인과 회원가입 버튼을 출력한다.
 
 - 유저 프로필
 
