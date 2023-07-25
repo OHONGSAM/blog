@@ -18,9 +18,11 @@
 
 - <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
 
-- <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML&logoColor=white">
+- <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
 
 - <img src="https://img.shields.io/badge/BootStrap-7952B3?style=for-the-badge&logo=BootStrap&logoColor=white">
+
+- <img src="https://img.shields.io/badge/sqlite-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
 
 #### - 서비스 배포 환경
 
@@ -34,7 +36,7 @@
 
 ### 3.1 ERD model
 
-<img width="1434" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/2ad66e11-e91b-4d9a-b191-0df65aabd40b">
+<img width="1434" alt="image" src="https://github.com/vBORIv/Django-Blog-Project/assets/89283288/f905fe08-e11b-467f-abac-7342ee767d4b">
 
 ### 3.2 폴더 구조
 
