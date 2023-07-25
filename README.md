@@ -21,7 +21,7 @@
 
 ### 2.2 배포 URL
 
-- http://13.209.37.52:8000/
+- ~~http://13.209.37.52:8000/~~
 
 ## 3. 프로젝트 구조와 개발 일정
 
@@ -90,7 +90,7 @@ Project_2
 
 #### - 개발 일정
 
-- 2023.07.17 ~ 2023.07.20
+- 2023.07.17 ~ 2023.07.31
 
 #### - 기술 스택
 
@@ -104,15 +104,15 @@ Project_2
 
 ### 4.1 Blog
 
-| 메인 페이지                                                                                                          | 전체글 목록                                                                                                          |
+| 메인 페이지                                                                                                          | 글목록                                                                                                               |
 | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | <img width=1000 src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/607a1394-b396-4700-96d8-de33447a08d1"> | <img width=1000 src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/36d53fce-88bd-4825-b613-427ec8355cf6"> |
 
 ### 4.2 User 계정
 
-| 회원가입 페이지                                                                                            | 로그인 페이지                                                                                           |
-| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| ![register](https://github.com/vBORIv/ORMI_project_2/assets/89283288/b97bbadd-1944-4582-be90-1c2d07562e3e) | ![login](https://github.com/vBORIv/ORMI_project_2/assets/89283288/e6a12ed6-0682-4e0e-9503-053cafc71af6) |
+| 회원가입 페이지                                                                                                 | 로그인 페이지                                                                                           |
+| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| ![register](https://github.com/vBORIv/Django-Blog-Project/assets/89283288/30ecfdcf-12aa-4e0a-bac7-2c38a0349365) | ![login](https://github.com/vBORIv/ORMI_project_2/assets/89283288/e6a12ed6-0682-4e0e-9503-053cafc71af6) |
 
 ## 5. 기능
 
@@ -142,11 +142,19 @@ Project_2
 
 - 로그인 로그아웃
 
-  | 로그인                                                                                                   | 로그아웃                                                                                                    |
-  | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-  | ![loging](https://github.com/vBORIv/ORMI_project_2/assets/89283288/0baddd44-71df-45af-898c-30fca4be0bee) | ![logouting](https://github.com/vBORIv/ORMI_project_2/assets/89283288/57164bc5-d0a3-4c3f-b6f1-7308a3d95761) |
+  | 로그인                                                                                                        | 로그아웃                                                                                                         |
+  | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+  | ![loging](https://github.com/vBORIv/Django-Blog-Project/assets/89283288/cd92d699-ea3b-4de7-b953-b254616e39e5) | ![logouting](https://github.com/vBORIv/Django-Blog-Project/assets/89283288/a5889b85-305e-4951-87b6-63d97d0080dd) |
 
-  Navigation Bar는 base.html에서 출력하며, 페이지 인덱싱과 함께 로그인, 로그아웃, 회원가입 버튼을 출력한다. 로그인되어있는 경우에는 로그인된 user id와 로그아웃 버튼이 출력된다. 로그인되어있지 않은 경우에는 로그인과 회원가입 버튼을 출력한다.
+  Navigation Bar는 base.html에서 출력하며, 페이지 인덱싱과 함께 로그인, 로그아웃, 회원가입 버튼을 출력한다. 로그인되어있는 경우에는 로그인된 user의 프로필 사진과 함께 id와 로그아웃 버튼이 출력된다. 프로필 이미지가 없는 유저는 서버에 업로드되어 있는 no_profile.png가 출력된다. 로그인되어있지 않은 경우에는 로그인과 회원가입 버튼을 출력한다.
+
+- 유저 프로필
+
+  | 프로필 수정                                                                                                       | 비밀번호 변경                                                                                                                 |
+  | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+  | ![프로필](https://github.com/vBORIv/Django-Blog-Project/assets/89283288/b92e9987-17f4-40f1-94dc-b4ba360d41c7) | ![비밀번호변경](https://github.com/vBORIv/Django-Blog-Project/assets/89283288/629a460f-04fb-4551-aed0-80d9619e2362) |
+
+  네이게이션 바에 출력되는 유저 id를 클릭하여 유저 프로필 페이지로 이동할 수 있다. 유저 프로필 페이지에서는 유저 ID, 프로필 사진을 수정할 수 있다. 비밀번호 변경 페이지는 유저 프로필 페이지로부터 접근할 수 있으며, Django에서 제공하는 `PasswordChangeView`를 이용하여 구현하였다. `(updated at 07.25)`
 
 - 게시글
 
@@ -154,7 +162,7 @@ Project_2
   | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
   | <img width="" alt="write" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/1331a9c8-11ca-4086-886a-3f0fa0fae1a9"> | <img width="" alt="edit" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/2766dbbc-f700-4a21-bf68-e32a3472fa99"> |
 
-  글(post) object는 제목, 내용, 썸네일, 카테고리, 작성일, 수정일을 가지고 있다. 글 작성 시 제목, 내용, 썸네일, 카테고리를 입력할 수 있다. 이때 썸네일에 올린 사진은 해당 게시글이 메인 페이지에 뜨게 될 경우 출력된다. 필수 항목은 아니고 썸네일이 없을 경우 서버에 있는 no_thumbnail 이미지가 출력된다. 카테고리는 HTML/CSS, Django, Python, 고양이가 있으며, select 태그를 통해 하나를 입력받는다.
+  글(post) object는 제목, 내용, 썸네일, 카테고리, 작성일, 수정일을 가지고 있다. 글 작성 시 제목, 내용, 썸네일, 카테고리를 입력할 수 있다. ~~이때 썸네일에 올린 사진은 해당 게시글이 메인 페이지에 뜨게 될 경우 출력된다. 필수 항목은 아니고 썸네일이 없을 경우 서버에 있는 no_thumbnail 이미지가 출력된다.~~ 메인 페이지에 출력되는 썸네일 사진은 글 내용 중 첫번째 사진으로, 정규표현식을 통해 이미지 마크다운 문법(`![name](link)`)을 찾도록 구현하였다.`(updated at 07.25)` 카테고리는 HTML/CSS, Django, Python, 고양이가 있으며, select 태그를 통해 하나를 입력받는다.
   로그인하지 않은 상태에서는 글 작성, 수정, 삭제 버튼이 출력되지 않으며, view에서 LoginRequiredMixin을 상속받아 URL을 통한 접근도 제한된다. 로그인을 한 경우에는 본인이 작성한 게시글에만 글 수정과 삭제 버튼이 출력된다.
 
 - 카테고리 별 목록
@@ -167,21 +175,29 @@ Project_2
   | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
   | <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/db531b0c-bbc5-41f2-b430-41f501b10c2d"> | <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/7a7009de-c985-443f-82ae-0f2c1417cabe"> |
 
-  카테고리는 URL에 \<path:category>를 통해 카테고리 이름을 입력 받아서 해당 페이지로 이동한다. \<str:>을 사용할 경우 'HTML/CSS'의 슬래쉬를 인식하여 reverse 에러가 발생하기에 \<path:>를 사용하였다.
+  카테고리는 URL에 `<path:category>`를 통해 카테고리 이름을 입력 받아서 해당 페이지로 이동한다. `<str:>`을 사용할 경우 'HTML/CSS'의 슬래쉬를 인식하여 reverse 에러가 발생하기에 `<path:>`를 사용하였다.
 
 - 댓글
 
-  | 비회원                                                                                                                             | 회원                                                                                                                              |
-  | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-  | <img width="1000" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/02eb61a5-5332-4d65-a588-b7f6df3cba2b"> | <img width="680" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/549e40cd-7a32-4a83-abae-735224ccec66"> |
+  | 비회원                                                                                                                                  | 회원                                                                                                                                   |
+  | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+  | <img width="1000" alt="image" src="https://github.com/vBORIv/Django-Blog-Project/assets/89283288/c202cd1e-8df1-43eb-860a-f3d5323ca14f"> | <img width="650" alt="image" src="https://github.com/vBORIv/Django-Blog-Project/assets/89283288/69c0b9ae-65b0-499c-97b8-2f96f4dbfcf6"> |
 
   로그인하지 않은 경우 댓글을 작성 또는 삭제하지 못한다. 댓글 작성 form이 화면에 출력되지 않을 뿐만 아니라 CommentWrite view에 LoginRequiredMixin을 상속받아 URL을 통한 접근도 제한된다. 로그인한 경우에는 본인이 작성한 댓글만 삭제할 수 있다.
 
-- 조회수 및 추천수 카운트
+  유저가 프로필에 등록한 프로필 사진이 댓글 목록 옆에 출력되며, 프로필 사진이 없을 경우 서버에 미리 저장된 no_profile.png가 출력된다.`(updated at 07.25)`
 
-  | 조회수                                                                                                               | 추천수                                                                                                               |
-  | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-  | <img width=1000 src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/2f66d4db-107a-497f-bbda-4645956ab035"> | <img width=1000 src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/a74105b1-f060-49d5-b7e1-d6e4cf51fc3e"> |
+- 조회수 및 추천수
+
+  | 조회수                                                                                                               |
+  | -------------------------------------------------------------------------------------------------------------------- |
+  | <img width=1000 src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/2f66d4db-107a-497f-bbda-4645956ab035"> |
+
+  | 추천                                                                                                        | 추천 취소                                                                                                       |
+  | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+  | ![추천](https://github.com/vBORIv/Django-Blog-Project/assets/89283288/6451cb03-d090-4713-8fba-b2656d82a143) | ![추천취소](https://github.com/vBORIv/Django-Blog-Project/assets/89283288/b973533b-d463-41b1-8ced-e5de0ba1a45b) |
+
+  추천 버튼과 함께 받은 추천수가 표시된다. 각 게시글에는 최대 한 번의 추천을 누를 수 있으며, 이미 추천을 누른 게시글에는 추천 버튼의 배경이 채워져서 표시된다. 이미 추천을 누른 게시글의 추천 버튼을 다시 눌러 추천을 취소할 수 있다. `(updated at 07.25)`
 
 - 검색
 
@@ -249,6 +265,37 @@ Project_2
 
   삽입된 이미지는 base64 형식으로 인코딩하지 않고, 우선 'blog/write/upload-image/'의 URL로 접근하여 서버의 '/media/uploads/'에 업로드한다. 이후 업로드된 path를 markdown 문법에 삽입하여 이미지를 출력한다. Markdown 이미지 삽입 문법을 사용하기 위해 웹 상에서 서버 이미지에 접근할 수 있는 경로가 필요하다. 따라서 파일이 저장된 경로에 접근하기 위해 MEDIA_ROOT와 MEDIA_URL를 새로 작성하고, URL pattern에 추가하였다. 또한 로컬 서버에서 이미지 업로드 작동을 테스트하기 위해 local_path를 "http://127.0.0.1:8000/media"로 선언하였다. 이후 AWS에서 서버 구동을 확인할 때에는 aws_path를 이용하여 접근하도록 변경하였다.
 
+  ```javascript
+  // post_write.html
+  const editor = new toastui.Editor({
+    el: document.querySelector("#editor"),
+    initialEditType: "markdown",
+    previewStyle: "vertical",
+    height: "300px",
+    hooks: {
+      addImageBlobHook: function (blob, callback) {
+        var formData = new FormData();
+        formData.append("image", blob);
+        var csrftoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+        var headers = { "X-CSRFToken": csrftoken };
+        fetch("upload-image/", {
+          method: "POST",
+          body: formData,
+          headers: headers,
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            var imageUrl = result.image_url;
+            callback(imageUrl, "alt text");
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      },
+    },
+  });
+  ```
+
   ```python
   ## views.py
   def upload_image(request, post_id=None):
@@ -282,6 +329,100 @@ Project_2
   <img width="1179" alt="image" src="https://github.com/vBORIv/ORMI_project_2/assets/89283288/7c0e5d32-4814-47c0-826f-a14214b64416">
 
   메인페이지에는 추천수가 많은 순서대로 최대 5개의 글이 출력된다. 이때 보여지는 썸네일 이미지는 글 작성 시 업로드할 수 있으며, 서버의 '/media/thumbnails/'에 저장된다. 썸네일이 없는 게시글은 '/media/thumbnails/no_img.jpg' 파일로 대체된다. 게시글 카드에는 작성일, 카테고리, 제목, 내용이 있다. 내용은 게시글의 앞부분 내용을 일부 보여주고 '...'으로 생략한다. 썸네일 이미지와 Read more 버튼에 해당 글의 링크를 연결하였다. 카테고리 배지에는 해당 카테고리 페이지 링크를 연결하였다.
+
+- 썸네일 이미지 `(updated at 07.25)`
+
+  글 작성 시에 추가로 썸네일 이미지를 업로드하지 않고 내용에만 추가하더라도 메인 페이지에 출력될 수 있도록 수정하였다. 글을 작성하고 저장하면, 글 내용에서 `![name](link)` 형식의 이미지 마크다운 문법을 정규표현식으로 찾는 함수를 views.py에 구현하였다. 글 작성 view에서는 앞의 함수를 호출하여 이미지 링크를 추출하고 이를 post.thumbnail_url에 저장한다.
+
+  ```python
+  ## views.py
+  import re
+
+  def find_img_link(content):
+      pattern = r"!\[([^]]+)\]\(([^)]+)\)"
+      match = re.search(pattern, content)
+      if match:
+          name, link = match.groups()
+          return name, link
+      return None, None
+
+
+  class PostWrite(LoginRequiredMixin, View):
+
+    def post(self, request):
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            name, link = find_img_link(str(form))
+            post = form.save(commit=False)
+            post.writer = request.user
+            post.thumbnail_url = link
+            post.content = request.POST["content"]
+            post.save()
+            return redirect("blog:list")
+        return redirect("blog:list")
+  ```
+
+- 중복 추천수 처리 `(updated at 07.25)`
+
+  같은 유저가 중복해서 추천수를 올릴 수 있는 문제를 `Post`와 `User`를 foreign key로 가지는 `Like` model을 추가하여 해결하였다. 추천 버튼을 눌렀을 때, 이미 해당 user와 post를 foreign key로 가지는 Like object가 존재할 경우에는 해당 object를 삭제하여 추천 취소 기능을 구현하였다. 글 디테일 화면을 출력할 때, 로그인되지 않은 유저는 ID 필드를 가지지 않기 때문에 `Like.objects.filter(post=post, user=request.user)`의 DB 호출 과정에서 오류가 발생했다. 따라서 로그인되지 않은 경우에는 무조건 추천을 누르지 않은 상태로 표시되도록 구현하였다.
+
+  ```python
+  ## models.py
+
+  class Like(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+  ## views.py
+
+  class PostLike(View):
+      def post(self, request, post_id):
+          post = get_object_or_404(Post, pk=post_id)
+
+          like = Like.objects.filter(post=post, user=request.user)
+          if like:
+              like.delete()
+          else:
+              new_like = Like.objects.create(post=post, user=request.user)
+              new_like.save()
+
+          post.likes = Like.objects.filter(post=post).count()
+          post.save()
+          return redirect("blog:detail", post_id)
+
+
+  class PostDetail(View):
+      def get(self, request, post_id):
+          post = get_object_or_404(Post, pk=post_id)
+          if request.user.is_authenticated:
+              like_chk = True if Like.objects.filter(post=post, user=request.user) else False
+              context = {
+                  "post": post,
+                  "comment_form": CommentForm,
+                  "like": like_chk,
+              }
+          else:
+              context = {
+                  "post": post,
+                  "comment_form": CommentForm,
+                  "like": False,
+              }
+          return render(request, "blog/post_detail.html", context)
+  ```
+
+  ```django
+  <!-- post_detail.html -->
+
+  <form action="{% url 'blog:like' post_id=post.pk %}" method="post" >
+      {% csrf_token %}
+      {% if like %}
+      <input type="submit" class="btn btn-danger" value="♥︎ {{ post.likes }}" />
+      {% else %}
+      <input type="submit" class="btn btn-outline-danger" value="♡ {{ post.likes }}" />
+      {% endif %}
+  </form>
+  ```
 
 - 반응형 페이지
 
@@ -393,11 +534,15 @@ Project_2
 
 - 유저
 
-  프로필 페이지를 만들고 프로필 사진을 업로드하거나 비밃번호 변경, 회원 탈퇴와 같은 기능을 추가할 수 있다. 유저의 프로필 사진은 작성한 댓글에 연결하여 댓글 사진을 눌러 해당 유저의 프로필을 볼 수 있도록 구현할 수 있다.
+  ~~프로필 페이지를 만들고 프로필 사진을 업로드하거나 비밃번호 변경과 같은 기능을 추가할 수 있다. 유저의 프로필 사진은 작성한 댓글에 연결하여 댓글 작성자의 ID와 함께 출력할 수 있다.~~ `(updated at 07.25)`
+
+  유저 프로필 페이지에서 회원 탈퇴 기능을 추가할 수 있다. 이때 해당 user object를 DB에서 삭제하는 것이 아니라 Django에서 제공하는 is_active 속성을 false로 변경하여 저장할 수 있다.
+
+  댓글에 유저 ID와 함께 출력되는 프로필 사진을 눌러 해당 유저의 프로필을 볼 수 있도록 구현할 수 있다.
 
 - UI
 
-  현재 로그인, 회원가입 화면에는 Django의 form을 그대로 출력하고 있다. 심지어는 중앙 정렬도 하지 않은 상태이다.
+  ~~현재 로그인, 회원가입 화면에는 Django의 form을 그대로 출력하고 있다. 심지어는 중앙 정렬도 하지 않은 상태이다.~~ `(updated at 07.25)`
 
 - 에러 페이지
 
@@ -409,7 +554,9 @@ Project_2
 
 - 조회 및 추천 중복 카운트
 
-  게시글 추천 기능의 초기 구현 단계에서는 추천 후 해당 게시글의 상세 페이지로 redirect될 때 조회수가 1 증가하는 문제가 발생하였다. 이는 추천 버튼을 눌렀을 때 조회수를 1 감소시키는 방법으로 해결하였다. 하지만 같은 유저가 같은 게시글을 중복하여 조회하거나 추천했을 때 중복 카운트되는 문제는 아직 해결하지 못하였다. 메인 페이지 노출이 추천수만을 기반으로 결정되기 때문에 조회수의 중복 카운트는 크게 문제되지 않을 수 있다. 그러나 추천수가 중복되어 카운트되는 문제는 실제 베포를 위해서는 반드시 해결해야할 부분이다.
+  게시글 추천 기능의 초기 구현 단계에서는 추천 후 해당 게시글의 상세 페이지로 redirect될 때 조회수가 1 증가하는 문제가 발생하였다. 이는 추천 버튼을 눌렀을 때 조회수를 1 감소시키는 방법으로 해결하였다.
+
+  ~~같은 유저가 같은 게시글을 중복하여 조회하거나 추천했을 때 중복 카운트되는 문제는 아직 해결하지 못하였다. 메인 페이지 노출이 추천수만을 기반으로 결정되기 때문에 조회수의 중복 카운트는 크게 문제되지 않을 수 있다. 그러나 추천수가 중복되어 카운트되는 문제는 실제 베포를 위해서는 반드시 해결해야할 부분이다.~~ `(updated at 07.25)`
 
 - 메인 페이지 위젯
 

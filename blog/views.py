@@ -177,13 +177,21 @@ class PostDetail(View):
         post = get_object_or_404(Post, pk=post_id)
         post.views += 1
         post.save()
-
-        like_chk = True if Like.objects.filter(post=post, user=request.user) else False
-        context = {
-            "post": post,
-            "comment_form": CommentForm,
-            "like": like_chk,
-        }
+        if request.user.is_authenticated:
+            like_chk = (
+                True if Like.objects.filter(post=post, user=request.user) else False
+            )
+            context = {
+                "post": post,
+                "comment_form": CommentForm,
+                "like": like_chk,
+            }
+        else:
+            context = {
+                "post": post,
+                "comment_form": CommentForm,
+                "like": False,
+            }
         print(post_id)
         return render(request, "blog/post_detail.html", context)
 
@@ -264,21 +272,15 @@ class PostSearch(View):
 class PostLike(View):
     def post(self, request, post_id):
         post = get_object_or_404(Post, pk=post_id)
-
         like = Like.objects.filter(post=post, user=request.user)
-        print(like)
         if like:
-            ## already LIKE
             like.delete()
         else:
             new_like = Like.objects.create(post=post, user=request.user)
             new_like.save()
-
         post.views -= 1
         post.likes = Like.objects.filter(post=post).count()
-
         post.save()
-
         return redirect("blog:detail", post_id)
 
 
