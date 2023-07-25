@@ -10,14 +10,21 @@
 
 ### 2.1 개발 환경
 
-- 개발 환경
+#### - 기술 스택
 
-  - Django
-  - Python
-  - JavaScript
+- <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=Django&logoColor=white">
 
-- 서비스 배포 환경
-  - AWS Lightsail (Ubuntu)
+- <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
+
+- <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
+
+- <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML&logoColor=white">
+
+- <img src="https://img.shields.io/badge/BootStrap-7952B3?style=for-the-badge&logo=BootStrap&logoColor=white">
+
+#### - 서비스 배포 환경
+
+- <img src="https://img.shields.io/badge/AWS LightSail-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white">
 
 ### 2.2 배포 URL
 
@@ -88,17 +95,7 @@ Project_2
 
 ### 3.3 개발 일정
 
-#### - 개발 일정
-
 - 2023.07.17 ~ 2023.07.31
-
-#### - 기술 스택
-
-- Django
-- Python
-- JavaScript
-- HTML
-- BootStrap CSS
 
 ## 4. 페이지 화면
 
@@ -534,7 +531,7 @@ Project_2
 
 - 유저
 
-  ~~프로필 페이지를 만들고 프로필 사진을 업로드하거나 비밃번호 변경과 같은 기능을 추가할 수 있다. 유저의 프로필 사진은 작성한 댓글에 연결하여 댓글 작성자의 ID와 함께 출력할 수 있다.~~ `(updated at 07.25)`
+  ~~프로필 페이지를 만들고 프로필 사진을 업로드하거나 비밃번호 변경과 같은 기능을 추가할 수 있다. 유저의 프로필 사진은 작성한 댓글에 연결하여 댓글 작성자의 ID와 함께 출력할 수 있다.~~ (구현 완료) `(updated at 07.25)`
 
   유저 프로필 페이지에서 회원 탈퇴 기능을 추가할 수 있다. 이때 해당 user object를 DB에서 삭제하는 것이 아니라 Django에서 제공하는 is_active 속성을 false로 변경하여 저장할 수 있다.
 
@@ -542,7 +539,7 @@ Project_2
 
 - UI
 
-  ~~현재 로그인, 회원가입 화면에는 Django의 form을 그대로 출력하고 있다. 심지어는 중앙 정렬도 하지 않은 상태이다.~~ `(updated at 07.25)`
+  ~~현재 로그인, 회원가입 화면에는 Django의 form을 그대로 출력하고 있다. 심지어는 중앙 정렬도 하지 않은 상태이다.~~ (구현 완료) `(updated at 07.25)`
 
 - 에러 페이지
 
@@ -552,11 +549,11 @@ Project_2
 
   현재는 작성일, 조회수, 추천수를 기준으로 내림차순 정렬만 가능하다. 따라서 정렬 링크를 다시 눌렀을 때 오름차순으로 정렬되는 기능이 추가적으로 구현될 수 있다.
 
-- 조회 및 추천 중복 카운트
+- 조회 & 추천 중복 카운트
 
   게시글 추천 기능의 초기 구현 단계에서는 추천 후 해당 게시글의 상세 페이지로 redirect될 때 조회수가 1 증가하는 문제가 발생하였다. 이는 추천 버튼을 눌렀을 때 조회수를 1 감소시키는 방법으로 해결하였다.
 
-  ~~같은 유저가 같은 게시글을 중복하여 조회하거나 추천했을 때 중복 카운트되는 문제는 아직 해결하지 못하였다. 메인 페이지 노출이 추천수만을 기반으로 결정되기 때문에 조회수의 중복 카운트는 크게 문제되지 않을 수 있다. 그러나 추천수가 중복되어 카운트되는 문제는 실제 베포를 위해서는 반드시 해결해야할 부분이다.~~ `(updated at 07.25)`
+  ~~같은 유저가 같은 게시글을 중복하여 조회하거나 추천했을 때 중복 카운트되는 문제는 아직 해결하지 못하였다. 메인 페이지 노출이 추천수만을 기반으로 결정되기 때문에 조회수의 중복 카운트는 크게 문제되지 않을 수 있다. 그러나 추천수가 중복되어 카운트되는 문제는 실제 베포를 위해서는 반드시 해결해야할 부분이다.~~ (구현 완료) `(updated at 07.25)`
 
 - 메인 페이지 위젯
 
