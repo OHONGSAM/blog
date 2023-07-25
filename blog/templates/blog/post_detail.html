@@ -17,28 +17,38 @@
           <a class="badge badge-secondary text-decoration-none link-light" href="{% url 'blog:category' category=post.category  %}">{{ post.category }}</a>
         </header>
         <!-- Preview image figure-->
+        <!--
         {% if post.thumbnail %}
         <figure class="mb-4"><img class="img-fluid rounded" src="{{ post.thumbnail.url }}" alt="..." /></figure>
         {% endif %}
+        -->
         <!-- Post content-->
         <section class="mb-5">
             <div id="editor"></div>
         </section>
-        {% if request.user.is_authenticated %}
-        <form action="{% url 'blog:like' post_id=post.pk %}" method="post">
-            {% csrf_token %}
-            <input type="submit" class="btn btn-outline-danger" value="♡" />
-        </form>
-        {% endif %}
-        <a href="{% url 'blog:list' %}" class="btn btn-outline-success">목록</a>
-        {% if post.writer == request.user %}
-        <a href="{% url 'blog:edit' post_id=post.pk %}" class="btn btn-outline-success">수정</a>
-        <form action="{% url 'blog:delete' post_id=post.pk %}" method="post" class="d-inline">
-            {% csrf_token %}
-            <input type="submit" class="btn btn-outline-danger" value="삭제" />
-        </form>
-        {% endif %}
+
+        <div class="d-flex justify-content-center mb-2">
+          {% if request.user.is_authenticated %}
+          <form action="{% url 'blog:like' post_id=post.pk %}" method="post" >
+              {% csrf_token %}
+              <input type="submit" class="btn btn-outline-danger" value="♡" />
+          </form>
+          {% endif %}
+        </div>
+
+        <div class="d-flex justify-content-center mb-3">
+          <a href="{% url 'blog:list' %}" class="btn btn-outline-success">목록</a>
+          {% if post.writer == request.user %}
+          <a href="{% url 'blog:edit' post_id=post.pk %}" class="btn btn-outline-success">수정</a>
+          <form action="{% url 'blog:delete' post_id=post.pk %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <input type="submit" class="btn btn-outline-danger" value="삭제" />
+          </form>
+          {% endif %}
+        </div>
+
       </article>
+
       <!-- Comments section-->
       <section class="mb-5">
           <div class="card bg-light">
