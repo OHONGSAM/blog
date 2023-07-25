@@ -31,7 +31,11 @@
           {% if request.user.is_authenticated %}
           <form action="{% url 'blog:like' post_id=post.pk %}" method="post" >
               {% csrf_token %}
-              <input type="submit" class="btn btn-outline-danger" value="♡" />
+              {% if like %}
+              <input type="submit" class="btn btn-danger" value="♥︎ {{ post.likes }}" />
+              {% else %}
+              <input type="submit" class="btn btn-outline-danger" value="♡ {{ post.likes }}" />
+              {% endif %}
           </form>
           {% endif %}
         </div>
